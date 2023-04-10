@@ -1,5 +1,5 @@
+import { IProduct } from "@customTypes/index";
 import axios from "axios";
-import { IProduct } from "./types";
 
 export const getAllProducts = async () => {
   const data: IProduct[] = await axios

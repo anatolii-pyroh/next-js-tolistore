@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next";
 
-import { getAllProducts } from "../utils/products";
-import { IProduct } from "../utils/types";
+import { getAllProducts } from "@utils/products";
 import { Layout } from "@components/layout";
+import { IProduct } from "@customTypes/index";
+import { Product } from "@components/product";
 
 interface IProps {
   productsData: IProduct[];
@@ -11,9 +12,9 @@ interface IProps {
 export default function Home({ productsData }: IProps) {
   return (
     <Layout>
-      <div style={{ border: "1px solid black" }}>
-        {productsData.map((product: IProduct) => (
-          <div key={product.id}>{product.title}</div>
+      <div>
+        {productsData.map((product: IProduct, index: number) => (
+          <Product product={product} index={index} key={product.id} />
         ))}
       </div>
     </Layout>
