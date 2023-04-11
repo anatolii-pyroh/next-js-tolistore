@@ -3,14 +3,14 @@ import styles from "./product.module.scss";
 
 import { IProduct } from "@customTypes/index";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IProps {
   product: IProduct;
-  index: number;
+  index?: number;
 }
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
-  console.log(product);
   const productClassName = clsx(styles.product);
   return (
     <div className={productClassName}>
@@ -21,7 +21,7 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         alt='productImg'
         priority={index === 0 ? true : false}
       />
-      {product.title}
+      <Link href={`products/${product.id}`}>{product.title}</Link>
     </div>
   );
 };

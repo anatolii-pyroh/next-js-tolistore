@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 
-import { getAllProducts } from "@utils/products";
+import { getAllProductsData } from "@utils/products";
 import { IProduct } from "@customTypes/index";
 import { Product } from "@components/product";
 
@@ -19,7 +19,7 @@ export default function Home({ productsData }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const productsData = await getAllProducts();
+  const productsData = await getAllProductsData();
   return {
     props: {
       productsData,
