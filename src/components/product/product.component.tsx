@@ -10,17 +10,18 @@ interface IProps {
 }
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
-  //   console.log(product);
+  console.log(product);
   const productClassName = clsx(styles.product);
   return (
     <div className={productClassName}>
       <Image
         src={product.image}
-        width={140}
-        height={140}
+        width={150}
+        height={150}
         alt='productImg'
         priority={index === 0 ? true : false}
       />
+      {product.title}
     </div>
   );
 };
