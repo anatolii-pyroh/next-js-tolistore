@@ -31,6 +31,10 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #0070f3;
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
