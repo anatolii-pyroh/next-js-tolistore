@@ -9,7 +9,7 @@ interface IProps {
   productData: IProduct;
 }
 
-const Products: React.FC<IProps> = ({ productData }) => {
+const Product: React.FC<IProps> = ({ productData }) => {
   return (
     <>
       <div>{JSON.stringify(productData)}</div>{" "}
@@ -35,4 +35,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default Products;
+export default Product;
