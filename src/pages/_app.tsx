@@ -5,7 +5,7 @@ import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { wrapper } from "@store/index";
 
-import { Layout } from "@components/layout";
+import { Layout } from "@components/UI/layout";
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
