@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "./layout.module.scss";
+import { Header } from "@components/header";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <Header />
       <main>{children}</main>
     </div>
   );
