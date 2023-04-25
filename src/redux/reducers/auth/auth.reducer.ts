@@ -1,15 +1,22 @@
 import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppThunk } from "@store/index";
 import { HYDRATE } from "next-redux-wrapper";
+import { signInThunk } from "./auth.thunk";
 
 type TInitialState = {
-  isLoggedIn: boolean;
+  isSetFromLocalStorage: boolean;
   user: string;
+  token: string;
+  loading: boolean;
+  success: boolean;
 };
 
 const initialState: TInitialState = {
-  isLoggedIn: false,
+  isSetFromLocalStorage: false,
   user: "",
+  token: "",
+  loading: false,
+  success: false,
 };
 
 export const authSlice = createSlice({
@@ -29,6 +36,23 @@ export const authSlice = createSlice({
         ...state,
         ...action.payload.auth,
       };
+    });
+
+    builder.addCase(signInThunk.pending, (state) => {
+      state.loading = true;
+      state.success = false;
+    });
+    builder.addCase(signInThunk.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+
+      state.token = payload;
+      state.isSetFromLocalStorage = true;
+    });
+    builder.addCase(signInThunk.rejected, (state, { payload }) => {
+      console.log(payload);
+      state.loading = false;
+      state.success = false;
     });
   },
 });
