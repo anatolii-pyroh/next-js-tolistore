@@ -16,9 +16,14 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./src/components/*"],
+      "@UI/*": ["./src/components/UI/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
-      "@customTypes/*": ["./src/types/*"]
+      "@customTypes/*": ["./src/types/*"],
+      "@store/*": ["./src/redux/store/*"],
+      "@reducers/*": ["./src/redux/reducers/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@api/*": ["./src/pages/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
