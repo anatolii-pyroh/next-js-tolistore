@@ -17,7 +17,6 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
     const token =
       typeof localStorage !== "undefined" &&
       localStorage.getItem("accessToken");
-    console.log(token);
     if (typeof token === "string") {
       changeAccessToken(token);
     }
