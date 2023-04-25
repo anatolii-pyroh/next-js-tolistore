@@ -1,22 +1,18 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "@store/index";
 import { HYDRATE } from "next-redux-wrapper";
-import { signInThunk } from "./auth.thunk";
+import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-type TInitialState = {
-  isSetFromLocalStorage: boolean;
-  user: string;
-  token: string;
-  loading: boolean;
-  success: boolean;
-};
+import { AppThunk } from "@store/index";
+
+import { signInThunk } from "./auth.thunk";
+import { TInitialState } from "./auth.types";
 
 const initialState: TInitialState = {
   isSetFromLocalStorage: false,
   user: "",
-  token: "",
+  accessToken: "",
   loading: false,
   success: false,
+  userData: {} as TInitialState["userData"],
 };
 
 export const authSlice = createSlice({
@@ -27,6 +23,11 @@ export const authSlice = createSlice({
       // console.log("Before:", state.user);
       state.user = payload;
       // console.log("After:", state.user);
+    },
+    changeAccessToken(state, { payload }: PayloadAction<string>) {
+      localStorage.setItem("accessToken", payload);
+      state.accessToken = payload;
+      state.isSetFromLocalStorage = true;
     },
   },
 
@@ -42,12 +43,9 @@ export const authSlice = createSlice({
       state.loading = true;
       state.success = false;
     });
-    builder.addCase(signInThunk.fulfilled, (state, { payload }) => {
+    builder.addCase(signInThunk.fulfilled, (state) => {
       state.loading = false;
       state.success = true;
-
-      state.token = payload;
-      state.isSetFromLocalStorage = true;
     });
     builder.addCase(signInThunk.rejected, (state, { payload }) => {
       console.log(payload);
@@ -65,5 +63,5 @@ export const fetchRandomName = (): AppThunk => async (dispatch) => {
   dispatch(addUser(`${data.first_name} ${data.last_name}`));
 };
 
-export const { addUser } = authSlice.actions;
+export const { changeAccessToken, addUser } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,6 +1,5 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
 
 import { getAllProductsIds, getProductData } from "@utils/products";
 import { IProduct } from "@customTypes/index";
@@ -13,7 +12,6 @@ const Product: React.FC<IProps> = ({ productData }) => {
   return (
     <>
       <div>{JSON.stringify(productData)}</div>{" "}
-      <Link href='/'>← Back to home</Link>
     </>
   );
 };

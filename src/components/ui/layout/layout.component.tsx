@@ -1,6 +1,8 @@
 import Head from "next/head";
 import styles from "./layout.module.scss";
 import { Header } from "@UI/header";
+import { useAuthActions } from "@reducers/auth/useAuthActions";
+import { useEffect } from "react";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,6 +11,18 @@ type LayoutProps = {
 const siteTitle = "Tolistore";
 
 export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
+  const { changeAccessToken } = useAuthActions();
+
+  useEffect(() => {
+    const token =
+      typeof localStorage !== "undefined" &&
+      localStorage.getItem("accessToken");
+    console.log(token);
+    if (typeof token === "string") {
+      changeAccessToken(token);
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>

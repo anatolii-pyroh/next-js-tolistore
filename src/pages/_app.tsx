@@ -9,6 +9,7 @@ import { Layout } from "@components/UI/layout";
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <Provider store={store}>
       <Layout>

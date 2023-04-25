@@ -1,11 +1,13 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch } from "@hooks/index";
 import { signInThunk } from "@reducers/auth/auth.thunk";
 import { useAuthSelector } from "@reducers/auth/useAuthSelector";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const [signInData, setSignInData] = useState({ username: "", password: "" });
   const { success } = useAuthSelector();
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -14,9 +16,14 @@ const Login = () => {
     dispatch(signInThunk(signInData));
   };
 
+  useEffect(() => {
+    if (!success) return;
+    router.push("/");
+  }, [success]);
   return (
     <form onSubmit={handleSubmit}>
-      username: mor_2314, password: 83r5^_
+      username: johnd <br /> password: m38rmF$
+      <br /> <br />
       <input
         name='username'
         type='text'
@@ -44,7 +51,8 @@ const Login = () => {
         required
       />
       <button type='submit'>Submit</button>
-      {success && "logged in!"}
+      <br />
+      <br />
     </form>
   );
 };
