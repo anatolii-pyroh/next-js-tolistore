@@ -1,11 +1,16 @@
 import { useEffect } from "react";
+import clsx from "clsx";
 import Head from "next/head";
 
-import styles from "./layout.module.scss";
+import { useAppDispatch } from "@hooks/index";
 
-import { Header } from "@UI/header";
-import { useAuthActions } from "@reducers/auth/useAuthActions";
-import clsx from "clsx";
+import { Header } from "@components/common/header";
+
+import { useProfileSelector } from "@reducers/profile/useProfileSelector";
+import { useProfileActions } from "@reducers/profile/useProfileActions";
+import { getUserDataThunk } from "@reducers/profile/profile.thunk";
+
+import styles from "./layout.module.scss";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,7 +19,9 @@ type LayoutProps = {
 const siteTitle = "Tolistore";
 
 export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
-  const { changeAccessToken } = useAuthActions();
+  const { accessToken, isSetFromLocalStorage } = useProfileSelector();
+  const { changeAccessToken } = useProfileActions();
+  const dispatch = useAppDispatch();
 
   const layoutClassName = clsx(`${styles.layout}`);
 
@@ -26,6 +33,13 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
       changeAccessToken(token);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isSetFromLocalStorage) return;
+    if (!accessToken) return;
+
+    dispatch(getUserDataThunk());
+  }, [accessToken]);
 
   return (
     <div className={layoutClassName}>

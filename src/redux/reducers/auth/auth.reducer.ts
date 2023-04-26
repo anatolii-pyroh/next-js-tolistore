@@ -7,9 +7,7 @@ import { signInThunk } from "./auth.thunk";
 import { TInitialState } from "./auth.types";
 
 const initialState: TInitialState = {
-  isSetFromLocalStorage: false,
   user: "",
-  accessToken: "",
   loading: false,
   success: false,
   userData: {} as TInitialState["userData"],
@@ -24,10 +22,8 @@ export const authSlice = createSlice({
       state.user = payload;
       // console.log("After:", state.user);
     },
-    changeAccessToken(state, { payload }: PayloadAction<string>) {
-      localStorage.setItem("accessToken", payload);
-      state.accessToken = payload;
-      state.isSetFromLocalStorage = true;
+    resetSuccessState(state) {
+      state.success = false;
     },
   },
 
@@ -63,5 +59,5 @@ export const fetchRandomName = (): AppThunk => async (dispatch) => {
   dispatch(addUser(`${data.first_name} ${data.last_name}`));
 };
 
-export const { changeAccessToken, addUser } = authSlice.actions;
+export const { addUser, resetSuccessState } = authSlice.actions;
 export default authSlice.reducer;

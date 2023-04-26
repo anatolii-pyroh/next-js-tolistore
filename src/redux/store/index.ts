@@ -1,4 +1,5 @@
 import authReducer from "@reducers/auth/auth.reducer";
+import profileReducer from "@reducers/profile/profile.reducer";
 import {
   Action,
   ThunkAction,
@@ -9,6 +10,7 @@ import { createWrapper } from "next-redux-wrapper";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  profile: profileReducer,
 });
 
 const makeStore = () =>
