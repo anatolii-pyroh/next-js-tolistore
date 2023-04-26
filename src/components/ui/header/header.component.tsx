@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import styles from "./header.module.scss";
-
 import { useAuthSelector } from "@reducers/auth/useAuthSelector";
 
 export const HeaderComponent = () => {
@@ -14,12 +12,18 @@ export const HeaderComponent = () => {
   }, [accessToken]);
 
   return (
-    <header className={styles.header}>
+    <header className={"bg-light-primary p-4 px-20"}>
       {isLoggedIn ? (
         "Welcome, user!"
       ) : (
         <Link href='/login'>
-          <button>Log in</button>
+          <button
+            className={`
+            bg-white text-light-primary p-1.5 rounded
+            hover:bg-light-primary hover:text-white border-2 border-solid`}
+          >
+            Login
+          </button>
         </Link>
       )}
     </header>
