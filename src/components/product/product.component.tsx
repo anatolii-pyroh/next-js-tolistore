@@ -16,10 +16,11 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
     <div className={productClassName}>
       <Image
         src={product.image}
-        width={150}
-        height={150}
+        width={100}
+        height={100}
         alt='productImg'
-        priority={index === 0 ? true : false}
+        className='h-fit max-h-28 aspect-auto'
+        priority={index === 0}
       />
       <Link href={`products/${product.id}`}>{product.title}</Link>
     </div>
