@@ -3,7 +3,7 @@ import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { AppThunk } from "@store/index";
 
-import { signInThunk } from "./auth.thunk";
+import { getUserDataThunk, signInThunk } from "./auth.thunk";
 import { TInitialState } from "./auth.types";
 
 const initialState: TInitialState = {
@@ -29,6 +29,9 @@ export const authSlice = createSlice({
       state.accessToken = payload;
       state.isSetFromLocalStorage = true;
     },
+    resetSuccessState(state) {
+      state.success = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -52,6 +55,22 @@ export const authSlice = createSlice({
       state.loading = false;
       state.success = false;
     });
+
+    builder.addCase(getUserDataThunk.pending, (state) => {
+      state.loading = true;
+      state.success = false;
+    });
+    builder.addCase(getUserDataThunk.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.userData = payload;
+      console.log(state.userData);
+    });
+    builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {
+      console.log(payload);
+      state.loading = false;
+      state.success = false;
+    });
   },
 });
 
@@ -63,5 +82,6 @@ export const fetchRandomName = (): AppThunk => async (dispatch) => {
   dispatch(addUser(`${data.first_name} ${data.last_name}`));
 };
 
-export const { changeAccessToken, addUser } = authSlice.actions;
+export const { changeAccessToken, addUser, resetSuccessState } =
+  authSlice.actions;
 export default authSlice.reducer;

@@ -19,7 +19,7 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         width={100}
         height={100}
         alt='productImg'
-        className='h-fit max-h-28 aspect-auto'
+        className='h-fit max-h-28 w-auto'
         priority={index === 0}
       />
       <Link href={`products/${product.id}`}>{product.title}</Link>
