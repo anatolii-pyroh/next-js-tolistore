@@ -4,11 +4,11 @@ import Head from "next/head";
 
 import { useAppDispatch } from "@hooks/index";
 
-import { useAuthActions } from "@reducers/auth/useAuthActions";
-import { useAuthSelector } from "@reducers/auth/useAuthSelector";
-import { getUserDataThunk } from "@reducers/auth/auth.thunk";
-
 import { Header } from "@UI/header";
+
+import { useProfileSelector } from "@reducers/profile/useProfileSelector";
+import { useProfileActions } from "@reducers/profile/useProfileActions";
+import { getUserDataThunk } from "@reducers/profile/profile.thunk";
 
 import styles from "./layout.module.scss";
 
@@ -19,8 +19,8 @@ type LayoutProps = {
 const siteTitle = "Tolistore";
 
 export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
-  const { accessToken, isSetFromLocalStorage } = useAuthSelector();
-  const { changeAccessToken } = useAuthActions();
+  const { accessToken, isSetFromLocalStorage } = useProfileSelector();
+  const { changeAccessToken } = useProfileActions();
   const dispatch = useAppDispatch();
 
   const layoutClassName = clsx(`${styles.layout}`);

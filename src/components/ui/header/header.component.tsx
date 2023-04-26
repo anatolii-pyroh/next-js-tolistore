@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
-import { useAuthSelector } from "@reducers/auth/useAuthSelector";
-import { useAuthActions } from "@reducers/auth/useAuthActions";
+import { useProfileSelector } from "@reducers/profile/useProfileSelector";
+import { useProfileActions } from "@reducers/profile/useProfileActions";
 
 export const HeaderComponent = () => {
-  const { accessToken, userData, loading } = useAuthSelector();
-  const { changeAccessToken } = useAuthActions();
+  const { accessToken, loading, userData } = useProfileSelector();
+  const { changeAccessToken } = useProfileActions();
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(accessToken));
 
   const handleLogoutClick = () => {

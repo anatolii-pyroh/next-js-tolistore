@@ -1,8 +1,8 @@
 export type TInitialState = {
-  user: string;
+  accessToken: string;
+  isSetFromLocalStorage: boolean;
   loading: boolean;
   success: boolean;
-
   userData: {
     id: number;
     email: string;

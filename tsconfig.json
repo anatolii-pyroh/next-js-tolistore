@@ -23,7 +23,7 @@
       "@store/*": ["./src/redux/store/*"],
       "@reducers/*": ["./src/redux/reducers/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@api/*": ["./src/pages/api/*"]
+      "@api/*": ["./src/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
