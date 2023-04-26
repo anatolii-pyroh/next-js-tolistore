@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import { useAppDispatch } from "@hooks/index";
 
-import { Header } from "@UI/header";
+import { Header } from "@components/common/header";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
