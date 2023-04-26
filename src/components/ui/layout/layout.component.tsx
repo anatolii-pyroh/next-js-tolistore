@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import Head from "next/head";
+
 import styles from "./layout.module.scss";
+
 import { Header } from "@UI/header";
 import { useAuthActions } from "@reducers/auth/useAuthActions";
-import { useEffect } from "react";
 
 type LayoutProps = {
   children: React.ReactNode;

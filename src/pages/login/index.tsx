@@ -21,11 +21,12 @@ const Login = () => {
     router.push("/");
   }, [success]);
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} name='loginForm'>
       username: johnd <br /> password: m38rmF$
       <br /> <br />
       <input
-        name='username'
+        id='login-form-username'
+        name='loginForm-username'
         type='text'
         value={signInData.username}
         onChange={(e) =>
@@ -35,10 +36,12 @@ const Login = () => {
           }))
         }
         placeholder='Enter your username'
+        autoComplete='username'
         required
       />
       <input
-        name='password'
+        id='login-form-password'
+        name='loginForm-password'
         type='password'
         value={signInData.password}
         onChange={(e) =>
@@ -48,6 +51,7 @@ const Login = () => {
           }))
         }
         placeholder='Enter your password'
+        autoComplete='current-password'
         required
       />
       <button type='submit'>Submit</button>
