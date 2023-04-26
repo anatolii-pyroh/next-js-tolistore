@@ -16,7 +16,7 @@ const siteTitle = "Tolistore";
 export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   const { changeAccessToken } = useAuthActions();
 
-  const layoutClassName = clsx(`container ${styles.layout}`);
+  const layoutClassName = clsx(`${styles.layout}`);
 
   useEffect(() => {
     const token =
@@ -36,7 +36,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <main className='px-20'>{children}</main>
+      <main className='px-20 pt-5'>{children}</main>
     </div>
   );
 };

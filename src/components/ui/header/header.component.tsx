@@ -12,15 +12,14 @@ export const HeaderComponent = () => {
   }, [accessToken]);
 
   return (
-    <header className={"bg-light-primary p-4 px-20"}>
+    <header className={"bg-light-primary p-3 px-20"}>
       {isLoggedIn ? (
         "Welcome, user!"
       ) : (
         <Link href='/login'>
           <button
-            className={`
-            bg-white text-light-primary p-1.5 rounded
-            hover:bg-light-primary hover:text-white border-2 border-solid`}
+            className={`rounded border-2 border-solid border-white bg-white p-1.5 
+              text-light-primary hover:bg-light-primary hover:text-white`}
           >
             Login
           </button>
