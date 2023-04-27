@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
-import { IconsEnum, SvgIcon } from "@UI/SvgIcon";
-import { TextSizeEnum, Text } from "@UI/Text";
+import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
+import { TextSizeEnum, Text } from "@components/UI/Text";
 
 import { ButtonProps, ButtonVariantEnum } from "./Button.types";
 

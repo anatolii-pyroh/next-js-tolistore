@@ -16,7 +16,6 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@UI/*": ["./src/components/UI/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
       "@customTypes/*": ["./src/types/*"],

@@ -1,6 +1,6 @@
 import { CSSProperties, MouseEvent } from "react";
 
-import { IconsEnum } from "@UI/SvgIcon";
+import { IconsEnum } from "@components/UI/SvgIcon";
 
 export enum ButtonVariantEnum {
   primary = "primary",

@@ -10,59 +10,67 @@
   border: none;
   outline: none;
   cursor: pointer;
-  box-shadow: var(--shadow-xs);
-
-  background: var(--button-bg-color);
-  color: var(--button-content-color);
-  stroke: var(--button-content-color);
+  background: transparent;
+  color: black;
+  stroke: black;
 
   &_variant {
     &_primary {
-      --button-bg-color: var(--primary-400);
-      --button-content-color: var(--primary-dark-900);
+      border: 2px solid var(--white);
+      background: var(--light-primary);
+      color: var(--white);
+      stroke: var(--white);
 
       &:hover {
-        --button-bg-color: var(--primary-500);
+        background: var(--white);
+        stroke: var(--light-primary);
+        color: var(--light-primary);
+      }
+
+      &:active {
+        background: var(--dark-primary);
       }
 
       &.disabled {
-        --button-bg-color: var(--primary-800);
-      }
-    }
-
-    &_secondary {
-      --button-bg-color: var(--primary-dark-900);
-      --button-content-color: var(--primary-400);
-      border: 1px solid var(--button-content-color);
-
-      &:hover {
-        --button-bg-color: var(--primary-800);
-        --button-content-color: var(--primary-300);
+        background: var(--light-grey);
       }
 
-      &.disabled {
-        --button-content-color: var(--gray-600);
-
-        &:hover {
-          --button-bg-color: var(--primary-dark-900);
+      &.loading {
+        .loader {
+          background: var(--primary);
         }
       }
     }
 
-    &_red {
-      --button-bg-color: var(--primary-dark-900);
-      --button-content-color: var(--error-400);
-      border: 1px solid var(--button-content-color);
+    &_secondary {
+      background: var(--ultra-light-primary);
+      color: var(--primary);
+      stroke: var(--primary);
 
       &:hover {
-        --button-bg-color: var(--error-900);
+        background: var(--primary);
+        color: var(--white);
+        stroke: var(--white);
+      }
+
+      &:active {
+        background: rgba($color: var(--primary), $alpha: 0.2);
+        color: var(--primary);
+        stroke: var(--primary);
       }
 
       &.disabled {
-        --button-content-color: var(--error-900);
+        background: var(--ultra-light-primary);
 
-        &:hover {
-          --button-bg-color: var(--primary-dark-900);
+        & * {
+          opacity: 0.4;
+        }
+      }
+
+      &.loading {
+        .loader {
+          background: var(--ultra-light-primary);
+          color: var(--primary);
         }
       }
     }
@@ -80,7 +88,7 @@
   &_size {
     &_sm {
       height: 36px;
-      padding: 0 14px;
+      padding: 0 10px;
     }
 
     &_md {

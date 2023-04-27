@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import styles from "./product.module.scss";
-
-import { IProduct } from "@customTypes/index";
 import Image from "next/image";
 import Link from "next/link";
+
+import { IProduct } from "@customTypes/index";
+
+import styles from "./product.module.scss";
 
 interface IProps {
   product: IProduct;
@@ -19,7 +20,7 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         width={100}
         height={100}
         alt='productImg'
-        className='h-fit max-h-28 w-auto'
+        className={styles.productImg}
         priority={index === 0}
       />
       <Link href={`products/${product.id}`}>{product.title}</Link>

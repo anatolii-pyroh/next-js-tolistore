@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import classNames from "classnames";
 import Link from "next/link";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 
 import { Text, TextSizeEnum } from "@components/UI/Text";
+import { Button } from "@components/UI/Button";
+import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
+import { IconsEnum } from "@components/UI/SvgIcon";
 
 import styles from "./Header.module.scss";
-import classNames from "classnames";
-import { Button } from "@components/UI/Button";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
@@ -39,7 +41,14 @@ export const HeaderComponent = () => {
               <Text size={TextSizeEnum.S18} textTransform='capitalize'>
                 welcome, {userData?.username}!
               </Text>
-              <Button onClick={handleLogoutClick} text='Logout' />
+              <Button
+                icon={IconsEnum.exit}
+                iconPosition='right'
+                variant={ButtonVariantEnum.primary}
+                size='sm'
+                onClick={handleLogoutClick}
+                text='Logout'
+              />
             </>
           ) : (
             <Link href='/login'>
