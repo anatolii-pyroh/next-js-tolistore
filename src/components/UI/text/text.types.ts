@@ -1,5 +1,5 @@
+import { LinkProps } from "next/link";
 import { CSSProperties } from "react";
-// import { LinkProps } from "next/link";
 
 export enum TextSizeEnum {
   S10 = "S10",
@@ -28,7 +28,7 @@ export enum FontWeightEnum {
 export type TextProps = {
   size: TextSizeEnum;
   fontWeight?: FontWeightEnum;
-  //   id?: string;
+  id?: string;
   dots?: boolean;
   textTransform?: "lowercase" | "uppercase" | "capitalize";
   className?: string;
@@ -40,4 +40,4 @@ export type TextProps = {
   onClick?: () => void;
 };
 
-// export type CustomLinkProps = LinkProps & TextProps & { disabled?: boolean };
+export type CustomLinkProps = LinkProps & TextProps & { disabled?: boolean };
