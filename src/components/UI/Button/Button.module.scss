@@ -1,0 +1,148 @@
+.button {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  min-height: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+
+  background: var(--button-bg-color);
+  color: var(--button-content-color);
+  stroke: var(--button-content-color);
+
+  &_variant {
+    &_primary {
+      --button-bg-color: var(--primary-400);
+      --button-content-color: var(--primary-dark-900);
+
+      &:hover {
+        --button-bg-color: var(--primary-500);
+      }
+
+      &.disabled {
+        --button-bg-color: var(--primary-800);
+      }
+    }
+
+    &_secondary {
+      --button-bg-color: var(--primary-dark-900);
+      --button-content-color: var(--primary-400);
+      border: 1px solid var(--button-content-color);
+
+      &:hover {
+        --button-bg-color: var(--primary-800);
+        --button-content-color: var(--primary-300);
+      }
+
+      &.disabled {
+        --button-content-color: var(--gray-600);
+
+        &:hover {
+          --button-bg-color: var(--primary-dark-900);
+        }
+      }
+    }
+
+    &_red {
+      --button-bg-color: var(--primary-dark-900);
+      --button-content-color: var(--error-400);
+      border: 1px solid var(--button-content-color);
+
+      &:hover {
+        --button-bg-color: var(--error-900);
+      }
+
+      &.disabled {
+        --button-content-color: var(--error-900);
+
+        &:hover {
+          --button-bg-color: var(--primary-dark-900);
+        }
+      }
+    }
+  }
+
+  &_width {
+    &_content {
+      width: unset;
+    }
+    &_full {
+      width: 100%;
+    }
+  }
+
+  &_size {
+    &_sm {
+      height: 36px;
+      padding: 0 14px;
+    }
+
+    &_md {
+      height: 40px;
+      padding: 0 16px;
+    }
+
+    &_lg {
+      height: 44px;
+      padding: 0 18px;
+    }
+  }
+
+  &_icon_position {
+    &_left {
+      flex-direction: row;
+    }
+
+    &_right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  --transition-time: 0s;
+  background: var(--button-bg-color);
+}
+
+.loading {
+  cursor: default;
+
+  .loader {
+    opacity: 1;
+    --transition-time: 0.3s;
+
+    svg {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

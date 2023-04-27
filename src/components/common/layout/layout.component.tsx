@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import clsx from "clsx";
+import classNames from "classnames";
 import Head from "next/head";
 
 import { useAppDispatch } from "@hooks/index";
@@ -23,7 +23,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   const { changeAccessToken } = useProfileActions();
   const dispatch = useAppDispatch();
 
-  const layoutClassName = clsx(`${styles.layout}`);
+  const layoutClassName = classNames(`${styles.layout}`);
 
   useEffect(() => {
     const token =

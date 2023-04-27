@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 
 import { getAllProductsData } from "@utils/products";
 import { IProduct } from "@customTypes/index";
-import { Product } from "@components/product";
+import { Product } from "@components/Product";
 
 interface IProps {
   productsData: IProduct[];

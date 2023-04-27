@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
+
+import { Text, TextSizeEnum } from "@components/UI/Text";
+
+import styles from "./Header.module.scss";
+import classNames from "classnames";
+import { Button } from "@components/UI/Button";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(accessToken));
+
+  const headerClassName = classNames(`${styles.header} container`);
 
   const handleLogoutClick = () => {
     changeAccessToken("");
@@ -18,9 +27,8 @@ export const HeaderComponent = () => {
 
   return (
     <header
-      className={`flex h-14 items-center ${
-        isLoggedIn ? "justify-between" : "justify-end"
-      }  bg-light-primary px-20 text-white`}
+      className={headerClassName}
+      style={{ justifyContent: isLoggedIn ? "space-between" : "flex-end" }}
     >
       {loading ? (
         <div>loading...</div>
@@ -28,14 +36,10 @@ export const HeaderComponent = () => {
         <>
           {isLoggedIn ? (
             <>
-              Welcome, {userData?.username}!
-              <button
-                className={`rounded border-2 border-solid border-white bg-white p-1.5 
-          text-light-primary hover:bg-light-primary hover:text-white`}
-                onClick={handleLogoutClick}
-              >
-                Logout
-              </button>
+              <Text size={TextSizeEnum.S18} textTransform='capitalize'>
+                welcome, {userData?.username}!
+              </Text>
+              <Button onClick={handleLogoutClick} text='Logout' />
             </>
           ) : (
             <Link href='/login'>

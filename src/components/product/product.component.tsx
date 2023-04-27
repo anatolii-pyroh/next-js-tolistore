@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import classNames from "classnames";
 import styles from "./product.module.scss";
 
 import { IProduct } from "@customTypes/index";
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
-  const productClassName = clsx(styles.product);
+  const productClassName = classNames(styles.product);
   return (
     <div className={productClassName}>
       <Image
