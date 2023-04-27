@@ -1,10 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
 :root {
   --transition-property: all;
-  --transition-duration: 0.4s;
+  --transition-duration: 0.3s;
   --transition-function: ease;
 }
 
@@ -23,6 +23,7 @@ body {
 }
 
 body {
+  color: var(--dark-grey);
   font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;

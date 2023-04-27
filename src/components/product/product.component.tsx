@@ -1,9 +1,10 @@
-import clsx from "clsx";
-import styles from "./product.module.scss";
+import classNames from "classnames";
+import Image from "next/image";
 
 import { IProduct } from "@customTypes/index";
-import Image from "next/image";
-import Link from "next/link";
+
+import styles from "./Product.module.scss";
+import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
 
 interface IProps {
   product: IProduct;
@@ -11,7 +12,8 @@ interface IProps {
 }
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
-  const productClassName = clsx(styles.product);
+  const productClassName = classNames(styles.product);
+  console.log(product);
   return (
     <div className={productClassName}>
       <Image
@@ -19,10 +21,14 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         width={100}
         height={100}
         alt='productImg'
-        className='h-fit max-h-28 w-auto'
+        className={styles.productImg}
         priority={index === 0}
       />
-      <Link href={`products/${product.id}`}>{product.title}</Link>
+      <CustomLink href={`products/${product.id}`} size={TextSizeEnum.S16}>
+        {product.title}
+      </CustomLink>
+      <Text size={TextSizeEnum.S14}>Rating: {product.rating.rate}/5</Text>
+      <Text size={TextSizeEnum.S16}>{product.price}$</Text>
     </div>
   );
 };

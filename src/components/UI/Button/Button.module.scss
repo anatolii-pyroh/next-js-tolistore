@@ -1,0 +1,156 @@
+.button {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  min-height: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  color: black;
+  stroke: black;
+
+  &_variant {
+    &_primary {
+      border: 2px solid var(--white);
+      background: var(--light-primary);
+      color: var(--white);
+      stroke: var(--white);
+
+      &:hover {
+        background: var(--white);
+        stroke: var(--light-primary);
+        color: var(--light-primary);
+      }
+
+      &:active {
+        background: var(--dark-primary);
+      }
+
+      &.disabled {
+        background: var(--light-grey);
+      }
+
+      &.loading {
+        .loader {
+          background: var(--primary);
+        }
+      }
+    }
+
+    &_secondary {
+      background: var(--ultra-light-primary);
+      color: var(--primary);
+      stroke: var(--primary);
+
+      &:hover {
+        background: var(--primary);
+        color: var(--white);
+        stroke: var(--white);
+      }
+
+      &:active {
+        background: rgba($color: var(--primary), $alpha: 0.2);
+        color: var(--primary);
+        stroke: var(--primary);
+      }
+
+      &.disabled {
+        background: var(--ultra-light-primary);
+
+        & * {
+          opacity: 0.4;
+        }
+      }
+
+      &.loading {
+        .loader {
+          background: var(--ultra-light-primary);
+          color: var(--primary);
+        }
+      }
+    }
+  }
+
+  &_width {
+    &_content {
+      width: unset;
+    }
+    &_full {
+      width: 100%;
+    }
+  }
+
+  &_size {
+    &_sm {
+      height: 36px;
+      padding: 0 10px;
+    }
+
+    &_md {
+      height: 40px;
+      padding: 0 16px;
+    }
+
+    &_lg {
+      height: 44px;
+      padding: 0 18px;
+    }
+  }
+
+  &_icon_position {
+    &_left {
+      flex-direction: row;
+    }
+
+    &_right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  --transition-time: 0s;
+  background: var(--button-bg-color);
+}
+
+.loading {
+  cursor: default;
+
+  .loader {
+    opacity: 1;
+    --transition-time: 0.3s;
+
+    svg {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

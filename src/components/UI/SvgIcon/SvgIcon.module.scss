@@ -1,0 +1,48 @@
+.svgIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  stroke: inherit;
+
+  &.filledCustomColor {
+    path {
+      fill: var(--svgCustomColor);
+    }
+  }
+
+  &_rotate {
+    &_0 {
+      display: flex; // do nothing
+    }
+    &_90 {
+      transform: rotate(90deg);
+    }
+
+    &_180 {
+      transform: rotate(180deg);
+    }
+
+    &_270 {
+      transform: rotate(270deg);
+    }
+  }
+
+  & > div {
+    height: 100%;
+    width: 100%;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    stroke: inherit;
+
+    path,
+    circle,
+    rect {
+      stroke: inherit;
+    }
+  }
+}

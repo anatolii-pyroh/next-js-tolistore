@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import clsx from "clsx";
+import classNames from "classnames";
 import Head from "next/head";
 
 import { useAppDispatch } from "@hooks/index";
 
-import { Header } from "@components/common/header";
+import { Header } from "@components/common/Header";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
@@ -23,7 +23,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   const { changeAccessToken } = useProfileActions();
   const dispatch = useAppDispatch();
 
-  const layoutClassName = clsx(`${styles.layout}`);
+  const layoutClassName = classNames(`${styles.layout}`);
 
   useEffect(() => {
     const token =
@@ -50,7 +50,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <main className='px-20 pt-5'>{children}</main>
+      <main className='container'>{children}</main>
     </div>
   );
 };

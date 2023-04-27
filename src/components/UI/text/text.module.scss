@@ -1,0 +1,119 @@
+.text {
+  text-align: left;
+  margin: 0;
+
+  &_size {
+    &_S10 {
+      font-size: 10px;
+    }
+    &_S12 {
+      font-size: 12px;
+    }
+    &_S14 {
+      font-size: 14px;
+    }
+    &_S16 {
+      font-size: 16px;
+    }
+    &_S18 {
+      font-size: 18px;
+    }
+    &_S20 {
+      font-size: 20px;
+    }
+    &_S22 {
+      font-size: 22px;
+    }
+    &_S24 {
+      font-size: 24px;
+    }
+    &_S26 {
+      font-size: 26px;
+    }
+    &_S28 {
+      font-size: 28px;
+    }
+    &_S30 {
+      font-size: 30px;
+    }
+    &_S32 {
+      font-size: 32px;
+    }
+    &_S40 {
+      font-size: 40px;
+    }
+    &_S48 {
+      font-size: 48px;
+    }
+  }
+
+  &_fontWeight {
+    &_FW400 {
+      font-weight: 400;
+    }
+
+    &_FW500 {
+      font-weight: 500;
+    }
+
+    &_FW600 {
+      font-weight: 600;
+    }
+
+    &_FW700 {
+      font-weight: 700;
+    }
+  }
+
+  &_textTransform {
+    &_undefined {
+      text-transform: initial;
+    }
+    &_lowercase {
+      text-transform: lowercase;
+    }
+
+    &_uppercase {
+      text-transform: uppercase;
+    }
+
+    &_capitalize {
+      text-transform: capitalize;
+    }
+  }
+
+  &_dots {
+    overflow: hidden;
+    width: inherit;
+    flex-flow: nowrap;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.customLink {
+  position: relative;
+  color: var(--dark-grey);
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  // &:not(.disabledLink)::after {
+  //   content: "";
+  //   display: block;
+  //   bottom: -2px;
+  //   position: absolute;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 2px;
+  //   background: var(--dark-grey);
+  //   opacity: 0;
+  //   transition: opacity 0.3s ease;
+  // }
+
+  // &:hover::after {
+  //   opacity: 1;
+  // }
+}

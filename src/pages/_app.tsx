@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { wrapper } from "@store/index";
 
-import { Layout } from "@components/common/layout";
+import { Layout } from "@components/Common/Layout";
 
 import "@styles/index.scss";
 
