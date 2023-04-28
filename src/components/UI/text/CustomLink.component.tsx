@@ -37,7 +37,7 @@ export const CustomLinkComponent = ({
       style={{ ...style }}
       id={id}
       {...rest}
-      onClickCapture={(e) => e.preventDefault()}
+      // onClickCapture={(e) => e.preventDefault()}
     >
       {children}
     </Link>

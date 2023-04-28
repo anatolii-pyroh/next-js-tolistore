@@ -24,7 +24,11 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         className={styles.productImg}
         priority={index === 0}
       />
-      <CustomLink href={`products/${product.id}`} size={TextSizeEnum.S16}>
+      <CustomLink
+        href={`products/${product.id}`}
+        size={TextSizeEnum.S16}
+        style={{ textAlign: "center" }}
+      >
         {product.title}
       </CustomLink>
       <Text size={TextSizeEnum.S14}>Rating: {product.rating.rate}/5</Text>

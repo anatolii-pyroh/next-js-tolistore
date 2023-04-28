@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
-import Link from "next/link";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 
-import { Text, TextSizeEnum } from "@components/UI/Text";
+import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
 import { Button } from "@components/UI/Button";
 import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
-import { IconsEnum } from "@components/UI/SvgIcon";
+import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
 
 import styles from "./Header.module.scss";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+console.log(styles);
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(accessToken));
+  const router = useRouter();
 
   const headerClassName = classNames(`${styles.header} container`);
 
@@ -28,19 +32,30 @@ export const HeaderComponent = () => {
   }, [accessToken]);
 
   return (
-    <header
-      className={headerClassName}
-      style={{ justifyContent: isLoggedIn ? "space-between" : "flex-end" }}
-    >
-      {loading ? (
-        <div>loading...</div>
-      ) : (
+    <header className={headerClassName}>
+      {loading ? null : (
         <>
+          <CustomLink
+            href='/'
+            size={TextSizeEnum.S16}
+            style={{
+              color: "var(--white)",
+              opacity: router.pathname !== "/" ? 1 : 0,
+              pointerEvents: router.pathname !== "/" ? "all" : "none",
+            }}
+          >
+            ← Back to home
+          </CustomLink>
           {isLoggedIn ? (
             <>
-              <Text size={TextSizeEnum.S18} textTransform='capitalize'>
-                welcome, {userData?.username}!
-              </Text>
+              <div className={styles.usernameAndCart}>
+                <Text size={TextSizeEnum.S18} textTransform='capitalize'>
+                  welcome, {userData?.username}!
+                </Text>
+                <Link href='/cart'>
+                  <SvgIcon src={IconsEnum.cart} color='white' />
+                </Link>
+              </div>
               <Button
                 icon={IconsEnum.exit}
                 iconPosition='right'
@@ -51,14 +66,12 @@ export const HeaderComponent = () => {
               />
             </>
           ) : (
-            <Link href='/login'>
-              <button
-                className={`rounded border-2 border-solid border-white bg-white p-1.5 
-              text-light-primary hover:bg-light-primary hover:text-white`}
-              >
-                Login
-              </button>
-            </Link>
+            <Button
+              onClick={() => router.push("/login")}
+              variant={ButtonVariantEnum.primary}
+              size='sm'
+              text='Login'
+            />
           )}
         </>
       )}

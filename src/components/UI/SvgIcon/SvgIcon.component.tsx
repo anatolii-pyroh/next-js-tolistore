@@ -9,6 +9,7 @@ export const SvgIconComponent = ({
   src,
   size = 24,
   rotate = "0",
+  color = "inherit",
   className,
   style,
   onClick,
@@ -25,6 +26,7 @@ export const SvgIconComponent = ({
   const customStyles = {
     width: `${size}px`,
     height: `${size}px`,
+    stroke: color,
     ...style,
   };
 
