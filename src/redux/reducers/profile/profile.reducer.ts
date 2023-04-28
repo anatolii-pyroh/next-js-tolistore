@@ -1,14 +1,18 @@
 import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TInitialState } from "./profile.types";
+import { TInitialState, UserData } from "./profile.types";
 import { getUserDataThunk } from "./profile.thunk";
 import { HYDRATE } from "next-redux-wrapper";
 
 const initialState: TInitialState = {
-  userData: {} as TInitialState["userData"],
+  userData: {} as UserData,
   accessToken: "",
   loading: false,
   success: false,
   isSetFromLocalStorage: false,
+  profileError: {
+    status: false,
+    message: "",
+  },
 };
 
 const profileSlice = createSlice({
@@ -40,7 +44,10 @@ const profileSlice = createSlice({
       console.log(state.userData);
     });
     builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {
-      console.log(payload);
+      state.profileError = {
+        status: true,
+        message: payload as string,
+      };
       state.loading = false;
       state.success = false;
     });

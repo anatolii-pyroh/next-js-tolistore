@@ -2,11 +2,11 @@ import { profileService } from "@api/profileService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 
-export const getUserDataThunk = createAsyncThunk(
-  "auth/getUserDataThunk",
-  async (_, { rejectWithValue }) => {
+export const getUserProductsCartThunk = createAsyncThunk(
+  "profileCart/getUserProductsCartThunk",
+  async (id: number, { rejectWithValue }) => {
     try {
-      const response = await profileService.getUserData();
+      const response = await profileService.getUserProductsCart(id);
       return response;
     } catch (err) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
