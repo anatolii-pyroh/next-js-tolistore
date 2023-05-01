@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import classNames from "classnames";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
@@ -10,10 +12,6 @@ import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
 
 import styles from "./Header.module.scss";
-import { useRouter } from "next/router";
-import Link from "next/link";
-
-console.log(styles);
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();

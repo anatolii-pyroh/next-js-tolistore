@@ -13,7 +13,7 @@ interface IProps {
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
   const productClassName = classNames(styles.product);
-  console.log(product);
+  // console.log(product);
   return (
     <div className={productClassName}>
       <Image

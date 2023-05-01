@@ -1,3 +1,5 @@
+import { PayloadAction } from "@reduxjs/toolkit";
+
 export type TInitialState = {
   accessToken: string;
   isSetFromLocalStorage: boolean;
@@ -48,5 +50,5 @@ export type UserData = {
   phone: string;
 };
 
-// api
-export type FetchProfileUserDataResponse = UserData;
+// actions
+export type ProfileChangeAccessTokenAction = PayloadAction<string>;

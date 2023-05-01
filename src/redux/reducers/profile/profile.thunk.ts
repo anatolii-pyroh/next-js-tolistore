@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 
 export const getUserDataThunk = createAsyncThunk(
-  "auth/getUserDataThunk",
+  "profile/getUserDataThunk",
   async (_, { rejectWithValue }) => {
     try {
       const response = await profileService.getUserData();

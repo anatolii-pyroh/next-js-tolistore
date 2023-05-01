@@ -1,5 +1,9 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TInitialState, UserData } from "./profile.types";
+import { AnyAction, createSlice } from "@reduxjs/toolkit";
+import {
+  ProfileChangeAccessTokenAction,
+  TInitialState,
+  UserData,
+} from "./profile.types";
 import { getUserDataThunk } from "./profile.thunk";
 import { HYDRATE } from "next-redux-wrapper";
 
@@ -19,7 +23,7 @@ const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    changeAccessToken(state, { payload }: PayloadAction<string>) {
+    changeAccessToken(state, { payload }: ProfileChangeAccessTokenAction) {
       localStorage.setItem("accessToken", payload);
       state.accessToken = payload;
       state.isSetFromLocalStorage = true;
@@ -41,7 +45,7 @@ const profileSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.userData = payload;
-      console.log(state.userData);
+      // console.log(state.userData);
     });
     builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {
       state.profileError = {

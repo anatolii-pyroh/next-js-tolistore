@@ -1,14 +1,17 @@
 // import { wrapper } from "@store/index";
+// import { getUserProductsCartThunk } from "@reducers/profile/profileCart/profileCart.thunk";
 import React from "react";
+import { useProfileCartSelector } from "@reducers/profile/profileCart/useProfileCartSelector";
 
 const Cart = () => {
-  return <div>User cart with products</div>;
+  const { cartData } = useProfileCartSelector();
+  return <div>{JSON.stringify(cartData)}</div>;
 };
 
 // export const getServerSideProps = wrapper.getServerSideProps(
 //   (store) => async () => {
 //     const { profile } = store.getState();
-//     store.dispatch(getUserProductsCartThunk(profile.id));
+//     store.dispatch(getUserProductsCartThunk(profile.userData.id));
 
 //     return {
 //       props: {},

@@ -1,12 +1,12 @@
 import { AnyAction, createSlice } from "@reduxjs/toolkit";
-import { TInitialState } from "./profileCart.types";
+import { TCartProduct, TInitialState } from "./profileCart.types";
 import { HYDRATE } from "next-redux-wrapper";
 import { getUserProductsCartThunk } from "./profileCart.thunk";
 
 const initialState: TInitialState = {
   loading: true,
   success: false,
-  cartData: [],
+  cartData: {} as TCartProduct,
   profileCartError: {
     status: false,
     message: "",
@@ -42,10 +42,11 @@ const profileCartSlice = createSlice({
           status: false,
           message: "",
         };
+        // console.log(payload);
         state.cartData = payload;
       }
     );
-    builder.addCase(getUserProductsCartThunk.pending, (state, { payload }) => {
+    builder.addCase(getUserProductsCartThunk.rejected, (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.profileCartError = {
