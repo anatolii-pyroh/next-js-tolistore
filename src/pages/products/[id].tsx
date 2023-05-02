@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllProductsIds();
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       productData,
     },
+    revalidate: 10,
   };
 };
 

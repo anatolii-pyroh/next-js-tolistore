@@ -1,8 +1,6 @@
 import { HYDRATE } from "next-redux-wrapper";
 import { AnyAction, createSlice } from "@reduxjs/toolkit";
 
-import { AppThunk } from "@store/index";
-
 import { signInThunk } from "./auth.thunk";
 import { FetchAuthActionType, TInitialState } from "./auth.types";
 
@@ -49,14 +47,6 @@ export const authSlice = createSlice({
     });
   },
 });
-
-export const fetchRandomName = (): AppThunk => async (dispatch) => {
-  const response = await fetch(
-    `https://reqres.in/api/users/${Math.floor(Math.random() * 10 + 1)}`
-  );
-  const { data } = await response.json();
-  dispatch(addUser(`${data.first_name} ${data.last_name}`));
-};
 
 export const { addUser, resetSuccessState } = authSlice.actions;
 export default authSlice.reducer;
