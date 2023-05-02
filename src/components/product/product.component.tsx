@@ -32,7 +32,7 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
         {product.title}
       </CustomLink>
       <Text size={TextSizeEnum.S14}>Rating: {product.rating.rate}/5</Text>
-      <Text size={TextSizeEnum.S16}>{product.price}$</Text>
+      <Text size={TextSizeEnum.S16}>{product.price.toFixed(2)}$</Text>
     </div>
   );
 };

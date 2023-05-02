@@ -2,6 +2,7 @@ import React from "react";
 import { wrapper } from "@store/index";
 import { getUserProductsCartThunk } from "@reducers/profile/profileCart/profileCart.thunk";
 import { useProfileCartSelector } from "@reducers/profile/profileCart/useProfileCartSelector";
+// import Cookies from "js-cookie";
 
 const Cart = () => {
   const { cartData } = useProfileCartSelector();
@@ -9,11 +10,18 @@ const Cart = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    const { profile } = store.getState();
+  (store) => async (context) => {
+    const userId = context.req.cookies.userId;
+    if (!userId) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
 
-    store.dispatch(getUserProductsCartThunk(profile.userData.id));
-
+    await store.dispatch(getUserProductsCartThunk(Number(userId)));
     return {
       props: {},
     };

@@ -8,7 +8,6 @@ export const getUserProductsCartThunk = createAsyncThunk(
     try {
       console.log("getUserProductsCartThunk run");
       const response = await profileService.getUserProductsCart(id);
-      console.log(response);
       return response;
     } catch (err) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

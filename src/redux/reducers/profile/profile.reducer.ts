@@ -6,6 +6,8 @@ import {
 } from "./profile.types";
 import { getUserDataThunk } from "./profile.thunk";
 
+import Cookies from "js-cookie";
+
 const initialState: TInitialState = {
   userData: {} as UserData,
   accessToken: "",
@@ -37,6 +39,7 @@ const profileSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.userData = payload;
+      Cookies.set("userId", state.userData.id.toString(), { expires: 7 });
       // console.log(state.userData);
     });
     builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {

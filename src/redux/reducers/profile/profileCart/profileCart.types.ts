@@ -12,7 +12,7 @@ export type TCartProduct = {
   id: number;
   userId: number;
   date: string;
-  products: TProduct[];
+  products: TProduct;
 };
 
 export type TProduct = {

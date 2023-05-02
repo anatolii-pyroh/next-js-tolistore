@@ -5,7 +5,6 @@ import { IProduct } from "@customTypes/index";
 import { Product } from "@components/Product";
 
 import styles from "@styles/Home.module.scss";
-import Link from "next/link";
 
 interface IProps {
   productsData: IProduct[];
@@ -14,7 +13,6 @@ interface IProps {
 export default function Home({ productsData }: IProps) {
   return (
     <div className={styles.home}>
-      <Link href='/abc'>abc</Link>
       {productsData.map((product: IProduct, index: number) => (
         <Product product={product} index={index} key={product.id} />
       ))}

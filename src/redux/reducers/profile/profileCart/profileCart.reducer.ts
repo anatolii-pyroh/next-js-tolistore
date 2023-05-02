@@ -42,7 +42,7 @@ const profileCartSlice = createSlice({
           status: false,
           message: "",
         };
-        state.cartData = payload;
+        state.cartData = payload[0];
       }
     );
     builder.addCase(getUserProductsCartThunk.rejected, (state, { payload }) => {

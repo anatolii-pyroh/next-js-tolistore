@@ -4,6 +4,6 @@ import { api } from ".";
 
 export const profileService = {
   getUserData: (): Promise<UserData> => api.get("users/1"),
-  getUserProductsCart: (id: number): Promise<TCartProduct> =>
+  getUserProductsCart: (id: number): Promise<TCartProduct[]> =>
     api.get(`carts/user/${id}`),
 };
