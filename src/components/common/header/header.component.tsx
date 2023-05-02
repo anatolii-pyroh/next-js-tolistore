@@ -51,7 +51,7 @@ export const HeaderComponent = () => {
                   welcome, {userData?.username}!
                 </Text>
                 <Link href='/cart'>
-                  <SvgIcon src={IconsEnum.cart} color='white' />
+                  <SvgIcon src={IconsEnum.cart} />
                 </Link>
               </div>
               <Button

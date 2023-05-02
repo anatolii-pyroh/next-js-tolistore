@@ -1,11 +1,10 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {
   ProfileChangeAccessTokenAction,
   TInitialState,
   UserData,
 } from "./profile.types";
 import { getUserDataThunk } from "./profile.thunk";
-import { HYDRATE } from "next-redux-wrapper";
 
 const initialState: TInitialState = {
   userData: {} as UserData,
@@ -30,13 +29,6 @@ const profileSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(HYDRATE, (state, action: AnyAction) => {
-      return {
-        ...state,
-        ...action.payload.profile,
-      };
-    });
-
     builder.addCase(getUserDataThunk.pending, (state) => {
       state.loading = true;
       state.success = false;

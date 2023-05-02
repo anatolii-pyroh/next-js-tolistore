@@ -3,7 +3,9 @@ import profileReducer from "@reducers/profile/profile.reducer";
 import profileCartReducer from "@reducers/profile/profileCart/profileCart.reducer";
 import {
   Action,
+  // AnyAction,
   ThunkAction,
+  // ThunkDispatch,
   combineReducers,
   configureStore,
 } from "@reduxjs/toolkit";
@@ -29,5 +31,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action
 >;
+// export type AppThunkDispatch = ThunkDispatch<AppState, void, AnyAction>;
 
 export const wrapper = createWrapper<AppStore>(makeStore);

@@ -21,7 +21,7 @@ const profileCartSlice = createSlice({
     builder.addCase(HYDRATE, (state, action: AnyAction) => {
       return {
         ...state,
-        ...action.payload.profile,
+        ...action.payload.profileCart,
       };
     });
 
@@ -42,7 +42,6 @@ const profileCartSlice = createSlice({
           status: false,
           message: "",
         };
-        // console.log(payload);
         state.cartData = payload;
       }
     );
@@ -51,7 +50,7 @@ const profileCartSlice = createSlice({
       state.success = false;
       state.profileCartError = {
         status: true,
-        message: payload as unknown as string,
+        message: payload as string,
       };
     });
   },

@@ -23,7 +23,9 @@
       "@reducers/*": ["./src/redux/reducers/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@api/*": ["./src/api/*"]
-    }
+    },
+    "noImplicitAny": true
+    // "strictNullChecks": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
