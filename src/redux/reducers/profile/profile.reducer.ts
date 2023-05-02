@@ -1,34 +1,36 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TInitialState } from "./profile.types";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  ProfileChangeAccessTokenAction,
+  TInitialState,
+  UserData,
+} from "./profile.types";
 import { getUserDataThunk } from "./profile.thunk";
-import { HYDRATE } from "next-redux-wrapper";
+
+import Cookies from "js-cookie";
 
 const initialState: TInitialState = {
-  userData: {} as TInitialState["userData"],
+  userData: {} as UserData,
   accessToken: "",
   loading: false,
   success: false,
   isSetFromLocalStorage: false,
+  profileError: {
+    status: false,
+    message: "",
+  },
 };
 
 const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    changeAccessToken(state, { payload }: PayloadAction<string>) {
+    changeAccessToken(state, { payload }: ProfileChangeAccessTokenAction) {
       localStorage.setItem("accessToken", payload);
       state.accessToken = payload;
       state.isSetFromLocalStorage = true;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(HYDRATE, (state, action: AnyAction) => {
-      return {
-        ...state,
-        ...action.payload.profile,
-      };
-    });
-
     builder.addCase(getUserDataThunk.pending, (state) => {
       state.loading = true;
       state.success = false;
@@ -37,10 +39,14 @@ const profileSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.userData = payload;
-      console.log(state.userData);
+      Cookies.set("userId", state.userData.id.toString(), { expires: 7 });
+      // console.log(state.userData);
     });
     builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {
-      console.log(payload);
+      state.profileError = {
+        status: true,
+        message: payload as string,
+      };
       state.loading = false;
       state.success = false;
     });

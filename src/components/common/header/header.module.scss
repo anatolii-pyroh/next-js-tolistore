@@ -1,9 +1,17 @@
 .header {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: 50px;
   padding: 0 5rem;
   background-color: var(--light-primary);
   color: var(--white);
+  justify-content: space-between;
   margin-bottom: 1rem;
+
+  .usernameAndCart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    stroke: white;
+  }
 }

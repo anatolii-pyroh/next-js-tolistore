@@ -26,5 +26,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       productsData,
     },
+    revalidate: 10,
   };
 };

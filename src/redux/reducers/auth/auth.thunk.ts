@@ -2,7 +2,7 @@ import { authService } from "@api/authService";
 import { ILogin } from "@customTypes/index";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { changeAccessToken } from "@reducers/profile/profile.reducer";
-import { AxiosError } from "axios";
+import axios from "axios";
 
 export const signInThunk = createAsyncThunk(
   "auth/signInThunk",
@@ -11,12 +11,13 @@ export const signInThunk = createAsyncThunk(
       const response = await authService.signIn(data);
       dispatch(changeAccessToken(response.token));
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const error: AxiosError = err as any;
-      if (!error.response) {
+      if (!axios.isAxiosError(err)) {
+        return;
+      }
+      if (!err.response) {
         throw err;
       }
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(err.response.data);
     }
   }
 );

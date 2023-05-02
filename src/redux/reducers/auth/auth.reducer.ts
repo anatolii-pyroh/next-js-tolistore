@@ -1,23 +1,22 @@
 import { HYDRATE } from "next-redux-wrapper";
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { AnyAction, createSlice } from "@reduxjs/toolkit";
 
 import { AppThunk } from "@store/index";
 
 import { signInThunk } from "./auth.thunk";
-import { TInitialState } from "./auth.types";
+import { FetchAuthActionType, TInitialState } from "./auth.types";
 
 const initialState: TInitialState = {
   user: "",
   loading: false,
   success: false,
-  userData: {} as TInitialState["userData"],
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    addUser(state, { payload }: PayloadAction<string>) {
+    addUser(state, { payload }: FetchAuthActionType) {
       // console.log("Before:", state.user);
       state.user = payload;
       // console.log("After:", state.user);
