@@ -6,17 +6,14 @@ export const getUserProductsCartThunk = createAsyncThunk(
   "profileCart/getUserProductsCartThunk",
   async (id: number, { rejectWithValue }) => {
     try {
-      console.log("getUserProductsCartThunk run");
       const response = await profileService.getUserProductsCart(id);
       return response;
-    } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const error: AxiosError = err as any;
-      if (!error.response) {
+    } catch (_err) {
+      const err = _err as AxiosError;
+      if (!err.response) {
         throw err;
       }
-      console.log(error.response.data);
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(err.response.data);
     }
   }
 );

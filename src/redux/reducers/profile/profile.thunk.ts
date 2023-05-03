@@ -8,13 +8,12 @@ export const getUserDataThunk = createAsyncThunk(
     try {
       const response = await profileService.getUserData();
       return response;
-    } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const error: AxiosError = err as any;
-      if (!error.response) {
+    } catch (_err) {
+      const err = _err as AxiosError;
+      if (!err.response) {
         throw err;
       }
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(err.response.data);
     }
   }
 );
