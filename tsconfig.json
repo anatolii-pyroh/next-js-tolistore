@@ -22,7 +22,8 @@
       "@store/*": ["./src/redux/store/*"],
       "@reducers/*": ["./src/redux/reducers/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@views/*": ["./src/views/*"]
     },
     "noImplicitAny": true
     // "strictNullChecks": true

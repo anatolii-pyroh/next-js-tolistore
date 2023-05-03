@@ -1,7 +1,8 @@
 import React from "react";
 import { wrapper } from "@store/index";
 import { getUserProductsCartThunk } from "@reducers/profile/profileCart/profileCart.thunk";
-import { UserProductsCartPage } from "../views/UserProductsCartPage";
+
+import { UserProductsCartPage } from "@views/UserProductsCartPage";
 // import Cookies from "js-cookie";
 
 const Cart = () => {

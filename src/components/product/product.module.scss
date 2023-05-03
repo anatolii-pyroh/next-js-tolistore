@@ -5,30 +5,27 @@
   align-items: center;
   justify-content: flex-start;
   gap: 15px;
-  margin-top: 10px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.123);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
   flex: 1 1 calc(350px - 25px);
-  height: fit-content;
-  min-height: 300px;
+  min-height: 350px;
   min-width: 200px;
 }
 
 .productCategory {
-  position: absolute;
-  right: 15px;
-  top: 15px;
+  align-self: flex-end;
   color: var(--grey);
 }
 
+.imageContainer {
+  height: 15rem;
+  width: 100%;
+  position: relative;
+}
+
 .productImg {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 200px;
-  max-height: 120px;
   object-fit: contain;
 }
 
