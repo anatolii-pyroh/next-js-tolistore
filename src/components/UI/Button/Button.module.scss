@@ -74,6 +74,36 @@
         }
       }
     }
+
+    &_outlined {
+      background: var(--white);
+      color: var(--primary);
+      stroke: var(--primary);
+      border: 2px solid var(--primary);
+
+      &:hover {
+        background: var(--primary);
+        color: var(--white);
+        stroke: var(--white);
+      }
+
+      &:active {
+        background: var(--ultra-light-primary);
+        color: var(--primary);
+        stroke: var(--primary);
+      }
+
+      &.disabled {
+        opacity: 0.4;
+      }
+
+      &.loading {
+        .loader {
+          background: var(--white);
+          color: var(--primary);
+        }
+      }
+    }
   }
 
   &_width {

@@ -11,6 +11,7 @@ import { Input } from "@components/UI/Input";
 
 import styles from "./LoginPage.module.scss";
 import { Button } from "@components/UI/Button";
+import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 
 export const LoginPageComponent = () => {
   const [signInData, setSignInData] = useState({ username: "", password: "" });
@@ -73,6 +74,7 @@ export const LoginPageComponent = () => {
         />
         <Button
           type='submit'
+          variant={ButtonVariantEnum.outlined}
           text='Submit'
           width='content'
           // className={`border-primary text-primary rounded border-2 border-solid p-1.5`}

@@ -6,6 +6,7 @@ export enum ButtonVariantEnum {
   primary = "primary",
   secondary = "secondary",
   red = "red",
+  outlined = "outlined",
 }
 
 export type ButtonProps = {

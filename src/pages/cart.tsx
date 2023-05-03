@@ -1,12 +1,11 @@
 import React from "react";
 import { wrapper } from "@store/index";
 import { getUserProductsCartThunk } from "@reducers/profile/profileCart/profileCart.thunk";
-import { useProfileCartSelector } from "@reducers/profile/profileCart/useProfileCartSelector";
+import { UserProductsCartPage } from "../views/UserProductsCartPage";
 // import Cookies from "js-cookie";
 
 const Cart = () => {
-  const { cartData } = useProfileCartSelector();
-  return <div>{JSON.stringify(cartData)}</div>;
+  return <UserProductsCartPage />;
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
