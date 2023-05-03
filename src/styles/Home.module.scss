@@ -1,5 +1,16 @@
 .home {
   display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
+  flex-direction: column;
+  gap: 15px;
+
+  .searchInput {
+    max-width: 350px;
+    stroke: var(--primary);
+  }
+
+  .productsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
 }
