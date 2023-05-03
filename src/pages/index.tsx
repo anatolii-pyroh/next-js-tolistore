@@ -21,6 +21,8 @@ export default function Home({ productsData }: IProps) {
         id='keyword'
         value={searchKeyword}
         className={styles.searchInput}
+        label='Search product by its title'
+        placeholder='Enter keyword...'
         leftBlock={
           <SvgIcon
             src={IconsEnum.search}

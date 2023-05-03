@@ -13,9 +13,12 @@ interface IProps {
 
 export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
   const productClassName = classNames(styles.product);
-  // console.log(product);
+  console.log(product);
   return (
     <div className={productClassName}>
+      <Text size={TextSizeEnum.S14} className={styles.productCategory}>
+        {product.category}
+      </Text>
       <Image
         src={product.image}
         width={100}
@@ -27,7 +30,7 @@ export const ProductComponent: React.FC<IProps> = ({ product, index }) => {
       <CustomLink
         href={`products/${product.id}`}
         size={TextSizeEnum.S16}
-        style={{ textAlign: "center" }}
+        className={styles.productTitle}
       >
         {product.title}
       </CustomLink>
