@@ -12,6 +12,11 @@
   flex: 1 1 calc(350px - 25px);
   min-height: 350px;
   min-width: 200px;
+
+  &:hover {
+    translate: 0 -15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 22px;
+  }
 }
 
 .productCategory {

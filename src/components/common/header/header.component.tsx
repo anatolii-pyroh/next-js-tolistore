@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import Cookies from "js-cookie";
 import classNames from "classnames";
+
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 
 import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
-import { Button } from "@components/UI/Button";
-import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
+import {
+  Button,
+  ButtonVariantEnum,
+  SwitchThemeButton,
+} from "@components/UI/Button";
 
 import styles from "./Header.module.scss";
-import Cookies from "js-cookie";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
@@ -55,6 +59,7 @@ export const HeaderComponent = () => {
                 <Link href='/cart'>
                   <SvgIcon src={IconsEnum.cart} />
                 </Link>
+                <SwitchThemeButton />
               </div>
               <Button
                 icon={IconsEnum.exit}

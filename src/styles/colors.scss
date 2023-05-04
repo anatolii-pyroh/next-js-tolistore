@@ -13,4 +13,9 @@
   --dark-green: #219653;
   --red: #d82045;
   --inherit: inherit;
+  --body-color: #fff;
+}
+
+[data-theme="dark"] {
+  --light-primary: green;
 }

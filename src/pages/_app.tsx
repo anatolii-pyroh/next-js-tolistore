@@ -9,6 +9,7 @@ import { Layout } from "@components/Common/Layout";
 import { Loader } from "@components/Common/Loader";
 
 import "@styles/index.scss";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, router, ...rest }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -28,20 +29,22 @@ export default function App({ Component, router, ...rest }: AppProps) {
   }, []);
 
   return (
-    <Provider store={store}>
-      <SwitchTransition mode='out-in'>
-        <CSSTransition
-          key={router.pathname}
-          classNames='pageTransition'
-          timeout={300}
-        >
-          <Layout>
-            <Component {...props.pageProps} />
-          </Layout>
-        </CSSTransition>
-      </SwitchTransition>
+    <ThemeProvider>
+      <Provider store={store}>
+        <SwitchTransition mode='out-in'>
+          <CSSTransition
+            key={router.pathname}
+            classNames='pageTransition'
+            timeout={300}
+          >
+            <Layout>
+              <Component {...props.pageProps} />
+            </Layout>
+          </CSSTransition>
+        </SwitchTransition>
 
-      <Loader loading={loading} />
-    </Provider>
+        <Loader loading={loading} />
+      </Provider>
+    </ThemeProvider>
   );
 }
