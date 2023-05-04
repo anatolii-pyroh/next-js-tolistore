@@ -33,3 +33,12 @@
   text-align: center;
   color: var(--light-primary);
 }
+
+.ratingAndPrice {
+  display: flex;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}

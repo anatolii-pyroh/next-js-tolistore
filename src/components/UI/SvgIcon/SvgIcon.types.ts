@@ -5,6 +5,7 @@ export enum IconsEnum {
   loader = "/icons/stroke/loader.svg",
   cart = "/icons/stroke/cart.svg",
   search = "/icons/stroke/search.svg",
+  info = "/icons/stroke/info.svg",
 }
 
 export type SvgIconProps = {

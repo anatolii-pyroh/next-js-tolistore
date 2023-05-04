@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 import { Provider } from "react-redux";
 import { wrapper } from "@store/index";
@@ -14,28 +15,32 @@ export default function App({ Component, router, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      setLoading(true);
-    };
+    const handleStartRouteChanging = () => setLoading(true);
+    const handleCompleteRouteChanging = () => setLoading(false);
 
-    const handleRouteComplete = () => {
-      setLoading(false);
-    };
-
-    router.events.on("routeChangeStart", handleRouteChange);
-    router.events.on("routeChangeComplete", handleRouteComplete);
+    router.events.on("routeChangeStart", handleStartRouteChanging);
+    router.events.on("routeChangeComplete", handleCompleteRouteChanging);
 
     return () => {
-      router.events.off("routeChangeStart", handleRouteChange);
-      router.events.off("routeChangeComplete", handleRouteComplete);
+      router.events.off("routeChangeStart", handleStartRouteChanging);
+      router.events.off("routeChangeComplete", handleCompleteRouteChanging);
     };
   }, []);
 
   return (
     <Provider store={store}>
-      <Layout>
-        <Component {...props.pageProps} />
-      </Layout>
+      <SwitchTransition mode='out-in'>
+        <CSSTransition
+          key={router.pathname}
+          classNames='pageTransition'
+          timeout={300}
+        >
+          <Layout>
+            <Component {...props.pageProps} />
+          </Layout>
+        </CSSTransition>
+      </SwitchTransition>
+
       <Loader loading={loading} />
     </Provider>
   );
