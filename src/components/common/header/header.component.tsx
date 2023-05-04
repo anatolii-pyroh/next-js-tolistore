@@ -12,6 +12,7 @@ import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
 
 import styles from "./Header.module.scss";
+import Cookies from "js-cookie";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
@@ -23,6 +24,7 @@ export const HeaderComponent = () => {
 
   const handleLogoutClick = () => {
     changeAccessToken("");
+    Cookies.remove("userId");
   };
 
   useEffect(() => {

@@ -14,10 +14,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const userId = context.req.cookies.userId;
     if (!userId) {
       return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
+        notFound: true,
       };
     }
 
