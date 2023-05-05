@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import type { AppProps } from "next/app";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-
 import { Provider } from "react-redux";
 import { wrapper } from "@store/index";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+
+import { ThemeProvider } from "next-themes";
+import type { AppProps } from "next/app";
 
 import { Layout } from "@components/Common/Layout";
 import { Loader } from "@components/Common/Loader";
 
 import "@styles/index.scss";
-import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, router, ...rest }: AppProps) {
   const [loading, setLoading] = useState(false);

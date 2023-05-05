@@ -52,31 +52,37 @@ export const HeaderComponent = () => {
           </CustomLink>
           {isLoggedIn ? (
             <>
-              <div className={styles.usernameAndCart}>
+              <div className={styles.buttonsContainer}>
                 <Text size={TextSizeEnum.S18} textTransform='capitalize'>
                   welcome, {userData?.username}!
                 </Text>
                 <Link href='/cart'>
                   <SvgIcon src={IconsEnum.cart} />
                 </Link>
+              </div>
+
+              <div className={styles.buttonsContainer}>
+                <Button
+                  icon={IconsEnum.exit}
+                  iconPosition='right'
+                  variant={ButtonVariantEnum.primary}
+                  size='sm'
+                  onClick={handleLogoutClick}
+                  text='Logout'
+                />
                 <SwitchThemeButton />
               </div>
-              <Button
-                icon={IconsEnum.exit}
-                iconPosition='right'
-                variant={ButtonVariantEnum.primary}
-                size='sm'
-                onClick={handleLogoutClick}
-                text='Logout'
-              />
             </>
           ) : (
-            <Button
-              onClick={() => router.push("/login")}
-              variant={ButtonVariantEnum.primary}
-              size='sm'
-              text='Login'
-            />
+            <div className={styles.buttonsContainer}>
+              <Button
+                onClick={() => router.push("/login")}
+                variant={ButtonVariantEnum.primary}
+                size='sm'
+                text='Login'
+              />
+              <SwitchThemeButton />
+            </div>
           )}
         </>
       )}

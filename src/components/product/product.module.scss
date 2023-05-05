@@ -47,3 +47,13 @@
   flex-direction: column;
   gap: 15px;
 }
+
+[data-theme="dark"] {
+  .product {
+    background-color: #0d1b2a;
+  }
+
+  .productTitle {
+    color: var(--dark-grey);
+  }
+}
