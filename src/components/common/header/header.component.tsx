@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import Cookies from "js-cookie";
 import classNames from "classnames";
+
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 
 import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
-import { Button } from "@components/UI/Button";
-import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
+import {
+  Button,
+  ButtonVariantEnum,
+  SwitchThemeButton,
+} from "@components/UI/Button";
 
 import styles from "./Header.module.scss";
 
@@ -23,6 +28,7 @@ export const HeaderComponent = () => {
 
   const handleLogoutClick = () => {
     changeAccessToken("");
+    Cookies.remove("userId");
   };
 
   useEffect(() => {
@@ -46,7 +52,7 @@ export const HeaderComponent = () => {
           </CustomLink>
           {isLoggedIn ? (
             <>
-              <div className={styles.usernameAndCart}>
+              <div className={styles.buttonsContainer}>
                 <Text size={TextSizeEnum.S18} textTransform='capitalize'>
                   welcome, {userData?.username}!
                 </Text>
@@ -54,22 +60,29 @@ export const HeaderComponent = () => {
                   <SvgIcon src={IconsEnum.cart} />
                 </Link>
               </div>
-              <Button
-                icon={IconsEnum.exit}
-                iconPosition='right'
-                variant={ButtonVariantEnum.primary}
-                size='sm'
-                onClick={handleLogoutClick}
-                text='Logout'
-              />
+
+              <div className={styles.buttonsContainer}>
+                <Button
+                  icon={IconsEnum.exit}
+                  iconPosition='right'
+                  variant={ButtonVariantEnum.primary}
+                  size='sm'
+                  onClick={handleLogoutClick}
+                  text='Logout'
+                />
+                <SwitchThemeButton />
+              </div>
             </>
           ) : (
-            <Button
-              onClick={() => router.push("/login")}
-              variant={ButtonVariantEnum.primary}
-              size='sm'
-              text='Login'
-            />
+            <div className={styles.buttonsContainer}>
+              <Button
+                onClick={() => router.push("/login")}
+                variant={ButtonVariantEnum.primary}
+                size='sm'
+                text='Login'
+              />
+              <SwitchThemeButton />
+            </div>
           )}
         </>
       )}
