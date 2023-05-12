@@ -20,24 +20,29 @@
 }
 
 .modal {
+  min-width: 300px;
+  min-height: 200px;
+  padding: 15px;
+  //
   width: min-content;
   height: min-content;
+  padding-top: 40px;
   max-height: 100vh;
   position: relative;
   background: var(--white);
   border: 1px solid var(--gray-200);
   box-sizing: border-box;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-card);
   border-radius: 6px;
 }
 
 .cross {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 15px;
+  right: 15px;
   width: 24px;
   height: 24px;
-  background: var(--grey);
+  // background: var(--grey);
   stroke: var(--dark-grey);
   border-radius: 6px;
   display: flex;

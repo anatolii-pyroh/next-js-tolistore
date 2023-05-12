@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import classNames from "classnames";
 import Head from "next/head";
 
-import { useAppDispatch } from "@hooks/index";
+import { useAppDispatch } from "@hooks/redux";
 
 import { Header } from "@components/Common/Header";
 

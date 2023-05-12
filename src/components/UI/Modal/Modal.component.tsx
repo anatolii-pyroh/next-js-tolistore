@@ -9,6 +9,7 @@ import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
 import { ModalProps } from "./Modal.types";
 
 import styles from "./Modal.module.scss";
+import { useDisableBodyScroll } from "@hooks/useDisableBodyScroll";
 
 export const ModalComponent = ({
   isVisible,
@@ -28,6 +29,20 @@ export const ModalComponent = ({
     }
   };
 
+  const modalClass = classNames(styles.modal, className);
+  const backdropClass = classNames(styles.backdrop, {
+    [styles.backdrop_enabled]: backdrop,
+    [styles.flow_backdrop_enabled]: flowBackdrop,
+  });
+
+  const cross = renderCustomCross ? (
+    renderCustomCross(onClose)
+  ) : (
+    <div className={styles.cross} onClick={onClose}>
+      <SvgIcon src={IconsEnum.cross} size={24} />
+    </div>
+  );
+
   useEffect(() => {
     const trackEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === "Esc") {
@@ -42,20 +57,7 @@ export const ModalComponent = ({
     };
   }, [onClose]);
 
-  const modalClass = classNames(styles.modal, className);
-  const backdropClass = classNames(styles.backdrop, {
-    [styles.backdrop_enabled]: backdrop,
-    [styles.flow_backdrop_enabled]: flowBackdrop,
-  });
-
-  const cross = renderCustomCross ? (
-    renderCustomCross(onClose)
-  ) : (
-    <div className={styles.cross} onClick={onClose}>
-      <SvgIcon src={IconsEnum.cross} size={16} />
-    </div>
-  );
-
+  useDisableBodyScroll(isVisible);
   return (
     <Portal>
       <CSSTransition
@@ -63,6 +65,7 @@ export const ModalComponent = ({
         classNames='pageTransition'
         timeout={300}
         unmountOnExit
+        nodeRef={backdropRef}
       >
         <div
           className={backdropClass}

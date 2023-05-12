@@ -1,4 +1,4 @@
-import { useAppSelector } from "@hooks/index";
+import { useAppSelector } from "@hooks/redux";
 
 export const useProfileCartSelector = () =>
   useAppSelector((state) => state.profileCart);

@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { useAppDispatch } from "@hooks/index";
+import { useAppDispatch } from "@hooks/redux";
 
 import { signInThunk } from "@reducers/auth/auth.thunk";
 import { useAuthSelector } from "@reducers/auth/useAuthSelector";
