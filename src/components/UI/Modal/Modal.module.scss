@@ -1,0 +1,47 @@
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  &.backdrop_enabled {
+    background-color: rgba(52, 64, 84, 0.4);
+    z-index: 10;
+  }
+  // This is for Flow component
+  &.flow_backdrop_enabled {
+    z-index: 10;
+  }
+}
+
+.modal {
+  width: min-content;
+  height: min-content;
+  max-height: 100vh;
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  box-sizing: border-box;
+  box-shadow: var(--shadow-xl);
+  border-radius: 6px;
+}
+
+.cross {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  background: var(--grey);
+  stroke: var(--dark-grey);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
