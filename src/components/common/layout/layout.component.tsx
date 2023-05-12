@@ -10,7 +10,7 @@ import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 import { getUserDataThunk } from "@reducers/profile/profile.thunk";
 
-import styles from "./layout.module.scss";
+import styles from "./Layout.module.scss";
 
 type LayoutProps = {
   children: React.ReactNode;
