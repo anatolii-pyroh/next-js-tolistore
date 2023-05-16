@@ -64,7 +64,7 @@ export const HeaderComponent = () => {
             <>
               <div className={styles.buttonsContainer}>
                 <Text size={TextSizeEnum.S18} textTransform='capitalize'>
-                  welcome, {userData?.username}!
+                  welcome, {userData.username}!
                 </Text>
                 <Link href='/cart'>
                   <SvgIcon src={IconsEnum.cart} />

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import classNames from "classnames";
+import { useRouter } from "next/router";
 import Head from "next/head";
+import classNames from "classnames";
+import jwtDecode from "jwt-decode";
 
 import { useAppDispatch } from "@hooks/redux";
 
@@ -21,9 +23,15 @@ const siteTitle = "Tolistore";
 export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   const { accessToken, isSetFromLocalStorage } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const layoutClassName = classNames(`${styles.layout}`);
+
+  const navigateAndClearToken = () => {
+    changeAccessToken("");
+    router.push("/login");
+  };
 
   useEffect(() => {
     const token =
@@ -36,9 +44,22 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (!isSetFromLocalStorage) return;
-    if (!accessToken) return;
+    if (!accessToken) {
+      return;
+      navigateAndClearToken();
+    }
 
     dispatch(getUserDataThunk());
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const decoded = jwtDecode<{ exp: number }>(accessToken);
+    // there is no exp in token payload so this logic wont run anyway
+    // if (decoded.exp * 1000 < Date.now()) {
+    //   return;
+    //   navigateAndClearToken();
+    // }
+    // const timeout = decoded.exp * 1000 - Date.now();
+    // setTimeout(() => navigateAndClearToken(), timeout);
   }, [accessToken]);
 
   return (
