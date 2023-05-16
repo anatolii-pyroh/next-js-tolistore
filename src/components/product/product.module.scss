@@ -7,7 +7,7 @@
   gap: 15px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.123);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-card);
   border-radius: 10px;
   flex: 1 1 calc(350px - 25px);
   min-height: 350px;
@@ -15,7 +15,7 @@
 
   &:hover {
     translate: 0 -15px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 22px;
+    box-shadow: var(--shadow-card-hover);
   }
 }
 

@@ -1,4 +1,7 @@
 .header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   height: 50px;
@@ -6,7 +9,6 @@
   background-color: var(--light-primary);
   color: var(--white);
   justify-content: space-between;
-  margin-bottom: 1rem;
 
   .buttonsContainer {
     display: flex;

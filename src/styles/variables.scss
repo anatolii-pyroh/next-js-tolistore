@@ -1,0 +1,38 @@
+:root {
+  // colors
+  --primary: #10a8c9;
+  --light-primary: #11b7db;
+  --dark-primary: #0e97b5;
+  --ultra-light-primary: #e8f7fa;
+  --grey: #9ca4b3;
+  --light-grey: #d7dbe2;
+  --dark-grey: #515b6c;
+  --white: #fff;
+  --orange: #f2994a;
+  --dark-orange: #ff8437;
+  --green: #03d087;
+  --dark-green: #219653;
+  --red: #d82045;
+  --inherit: inherit;
+  --body-color: #fff;
+
+  // shadows
+  --shadow-card: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow-card-hover: rgba(0, 0, 0, 0.3) 0px 5px 22px;
+  --shadow-xs: 0px 1px 2px black;
+  --shadow-sm: 0px 1px 3px black, 0px 1px 2px black;
+  --shadow-md: 0px 4px 8px -2px black, 0px 2px 4px -2px black;
+  --shadow-lg: 0px 12px 16px -4px black, 0px 4px 6px -2px black;
+  --shadow-xl: 0px 20px 24px -4px black, 0px 8px 8px -4px black;
+  --shadow-2xl: 0px 24px 48px -12px black;
+  --shadow-3xl: 0px 32px 64px -12px black;
+  --shadow-focus: 0px 1px 2px rgba(16, 24, 40, 0.5),
+    0px 0px 0px 4px var(--primary);
+  --shadow-error: 0px 1px 2px rgba(16, 24, 40, 0.5), 0px 0px 0px 4px var(--red);
+}
+
+[data-theme="dark"] {
+  --light-primary: #415a77;
+  --body-color: #1b263b;
+  --dark-grey: #e0e1dd;
+}

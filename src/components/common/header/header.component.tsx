@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import classNames from "classnames";
+import { CSSTransition } from "react-transition-group";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,6 +23,8 @@ export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(accessToken));
+  const loggedInButtonsRef = useRef(null);
+  const loggedOutButtonRef = useRef(null);
   const router = useRouter();
 
   const headerClassName = classNames(`${styles.header} container`);
@@ -39,6 +42,7 @@ export const HeaderComponent = () => {
     <header className={headerClassName}>
       {loading ? null : (
         <>
+          {" "}
           <CustomLink
             href='/'
             size={TextSizeEnum.S16}
@@ -50,11 +54,17 @@ export const HeaderComponent = () => {
           >
             ← Back to home
           </CustomLink>
-          {isLoggedIn ? (
+          <CSSTransition
+            in={isLoggedIn}
+            classNames='pageTransition'
+            timeout={300}
+            nodeRef={loggedInButtonsRef}
+            unmountOnExit
+          >
             <>
               <div className={styles.buttonsContainer}>
                 <Text size={TextSizeEnum.S18} textTransform='capitalize'>
-                  welcome, {userData?.username}!
+                  welcome, {userData.username}!
                 </Text>
                 <Link href='/cart'>
                   <SvgIcon src={IconsEnum.cart} />
@@ -73,7 +83,14 @@ export const HeaderComponent = () => {
                 <SwitchThemeButton />
               </div>
             </>
-          ) : (
+          </CSSTransition>
+          <CSSTransition
+            in={!isLoggedIn}
+            classNames='pageTransition'
+            timeout={300}
+            nodeRef={loggedOutButtonRef}
+            unmountOnExit
+          >
             <div className={styles.buttonsContainer}>
               <Button
                 onClick={() => router.push("/login")}
@@ -83,7 +100,7 @@ export const HeaderComponent = () => {
               />
               <SwitchThemeButton />
             </div>
-          )}
+          </CSSTransition>
         </>
       )}
     </header>

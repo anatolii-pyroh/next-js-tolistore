@@ -2,9 +2,9 @@ import authReducer from "@reducers/auth/auth.reducer";
 import profileReducer from "@reducers/profile/profile.reducer";
 import profileCartReducer from "@reducers/profile/profileCart/profileCart.reducer";
 import {
-  Action,
+  // Action,
   // AnyAction,
-  ThunkAction,
+  // ThunkAction,
   // ThunkDispatch,
   combineReducers,
   configureStore,
@@ -25,12 +25,12 @@ const makeStore = () =>
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  AppState,
-  unknown,
-  Action
->;
+// export type AppThunk<ReturnType = void> = ThunkAction<
+//   ReturnType,
+//   AppState,
+//   unknown,
+//   Action
+// >;
 // export type AppThunkDispatch = ThunkDispatch<AppState, void, AnyAction>;
 
 export const wrapper = createWrapper<AppStore>(makeStore);

@@ -8,6 +8,7 @@ export enum IconsEnum {
   info = "/icons/stroke/info.svg",
   moon = "/icons/stroke/moon.svg",
   sun = "/icons/stroke/sun.svg",
+  cross = "/icons/stroke/cross.svg",
 }
 
 export type SvgIconProps = {

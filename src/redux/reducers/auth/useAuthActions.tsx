@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@hooks/index";
+import { useAppDispatch } from "@hooks/redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { addUser, resetSuccessState } from "./auth.reducer";
 
