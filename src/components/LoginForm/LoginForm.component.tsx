@@ -11,6 +11,7 @@ import { Input } from "@components/UI/Input";
 import styles from "./LoginForm.module.scss";
 import { Button } from "@components/UI/Button";
 import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
+import { Loader } from "@components/Common/Loader";
 
 export const LoginFormComponent = ({
   onSuccess,
@@ -18,7 +19,7 @@ export const LoginFormComponent = ({
   onSuccess: () => void;
 }) => {
   const [signInData, setSignInData] = useState({ username: "", password: "" });
-  const { success } = useAuthSelector();
+  const { success, loading } = useAuthSelector();
   const { resetSuccessState } = useAuthActions();
   const dispatch = useAppDispatch();
 
@@ -82,6 +83,7 @@ export const LoginFormComponent = ({
           // className={`border-primary text-primary rounded border-2 border-solid p-1.5`}
         />
       </form>
+      <Loader loading={loading} />
     </div>
   );
 };
