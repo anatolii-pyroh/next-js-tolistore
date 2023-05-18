@@ -77,20 +77,20 @@
 
     &_outlined {
       background: var(--white);
-      color: var(--primary);
-      stroke: var(--primary);
-      border: 2px solid var(--primary);
+      color: var(--light-primary);
+      stroke: var(--light-primary);
+      border: 2px solid var(--light-primary);
 
       &:hover {
-        background: var(--primary);
+        background: var(--light-primary);
         color: var(--white);
         stroke: var(--white);
       }
 
       &:active {
         background: var(--ultra-light-primary);
-        color: var(--primary);
-        stroke: var(--primary);
+        color: var(--light-primary);
+        stroke: var(--light-primary);
       }
 
       &.disabled {
@@ -100,7 +100,7 @@
       &.loading {
         .loader {
           background: var(--white);
-          color: var(--primary);
+          color: var(--light-primary);
         }
       }
     }

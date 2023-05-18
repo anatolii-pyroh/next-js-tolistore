@@ -7,7 +7,6 @@ import { Input } from "@components/UI/Input";
 import { SvgIcon, IconsEnum } from "@components/UI/SvgIcon";
 
 import styles from "./HomePage.module.scss";
-import { Modal } from "@components/UI/Modal";
 
 type Props = {
   productsData: IProduct[];
@@ -15,13 +14,9 @@ type Props = {
 
 export const HomePageComponent = ({ productsData }: Props) => {
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
 
   return (
     <div className={styles.home}>
-      <button type='button' onClick={() => setIsVisibleModal(true)}>
-        open modal
-      </button>
       <Input
         id='keyword'
         value={searchKeyword}
@@ -45,12 +40,6 @@ export const HomePageComponent = ({ productsData }: Props) => {
             <Product product={product} index={index} key={product.id} />
           ))}
       </div>
-      <Modal
-        isVisible={isVisibleModal}
-        onClose={() => setIsVisibleModal(false)}
-      >
-        Modal window
-      </Modal>
     </div>
   );
 };
