@@ -31,6 +31,7 @@ export const ButtonComponent = ({
 }: ButtonProps) => {
   const buttonClass = classNames(
     styles.button,
+    "myTransition",
     {
       [styles[`button_variant_${variant}`]]: variant,
       [styles[`button_size_${size}`]]: size,
