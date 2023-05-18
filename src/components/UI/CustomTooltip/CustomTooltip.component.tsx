@@ -10,7 +10,12 @@ export const CustomTooltipComponent = ({
   children,
 }: PropsWithChildren<CustomTooltipProps>) => {
   return (
-    <Tooltip id={id} place={"top"} className={styles.customTooltip} float>
+    <Tooltip
+      id={id}
+      place={"bottom"}
+      className={styles.customTooltip}
+      // float
+    >
       {children}
     </Tooltip>
   );

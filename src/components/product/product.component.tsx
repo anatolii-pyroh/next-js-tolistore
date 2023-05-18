@@ -5,6 +5,7 @@ import { IProduct } from "@customTypes/index";
 
 import styles from "./Product.module.scss";
 import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
+import { InfoHover } from "@components/UI/InfoHover";
 
 type TProps = {
   product: IProduct;
@@ -13,10 +14,13 @@ type TProps = {
 
 export const ProductComponent: React.FC<TProps> = ({ product }) => {
   const productClassName = classNames(styles.product, "myTransition");
-
+  console.log(product);
   return (
     <div className={productClassName}>
       <Text size={TextSizeEnum.S14} className={styles.productCategory}>
+        <InfoHover id={`product-description-${product.id}`}>
+          {product.description}
+        </InfoHover>
         {product.category}
       </Text>
       <div className={styles.imageContainer}>
