@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 export const useDisableBodyScroll = (open: boolean) => {
   const scrollbarWidth =
+    typeof window != "undefined" &&
     window.innerWidth - document.documentElement.clientWidth;
 
   useEffect(() => {

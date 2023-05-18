@@ -1,5 +1,4 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 import { useAppDispatch } from "@hooks/redux";
 
@@ -9,15 +8,18 @@ import { useAuthActions } from "@reducers/auth/useAuthActions";
 
 import { Input } from "@components/UI/Input";
 
-import styles from "./LoginPage.module.scss";
+import styles from "./LoginForm.module.scss";
 import { Button } from "@components/UI/Button";
 import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 
-export const LoginPageComponent = () => {
+export const LoginFormComponent = ({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) => {
   const [signInData, setSignInData] = useState({ username: "", password: "" });
   const { success } = useAuthSelector();
   const { resetSuccessState } = useAuthActions();
-  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -28,7 +30,7 @@ export const LoginPageComponent = () => {
 
   useEffect(() => {
     if (!success) return;
-    router.push("/");
+    onSuccess();
     resetSuccessState();
   }, [success]);
 
@@ -84,4 +86,4 @@ export const LoginPageComponent = () => {
   );
 };
 
-LoginPageComponent.displayName = "LoginPage";
+LoginFormComponent.displayName = "LoginForm";

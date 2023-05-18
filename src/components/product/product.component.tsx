@@ -11,7 +11,7 @@ type TProps = {
   index?: number;
 };
 
-export const ProductComponent: React.FC<TProps> = ({ product, index }) => {
+export const ProductComponent: React.FC<TProps> = ({ product }) => {
   const productClassName = classNames(styles.product);
 
   return (
@@ -26,7 +26,7 @@ export const ProductComponent: React.FC<TProps> = ({ product, index }) => {
           fill
           sizes='25vw'
           className={styles.productImg}
-          priority={index === 0}
+          priority
         />
       </div>
       <CustomLink
