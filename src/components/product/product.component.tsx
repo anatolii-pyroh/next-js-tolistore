@@ -12,7 +12,7 @@ type TProps = {
 };
 
 export const ProductComponent: React.FC<TProps> = ({ product }) => {
-  const productClassName = classNames(styles.product);
+  const productClassName = classNames(styles.product, "myTransition");
 
   return (
     <div className={productClassName}>

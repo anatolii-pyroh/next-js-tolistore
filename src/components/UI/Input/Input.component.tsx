@@ -54,6 +54,7 @@ export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
 
     const inputClass = classNames(
       styles.input,
+
       {
         [styles.input_focused]: isFocused,
         [styles.input_error]: !!errorMessage || hasError,
@@ -77,7 +78,7 @@ export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </Text>
         )}
-        <div className={styles.inner}>
+        <div className={styles.inner + " myTransition"}>
           {leftBlock && (
             <div
               className={styles.leftBlock}
