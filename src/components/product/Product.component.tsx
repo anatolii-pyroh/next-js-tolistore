@@ -14,15 +14,16 @@ type TProps = {
 
 export const ProductComponent: React.FC<TProps> = ({ product }) => {
   const productClassName = classNames(styles.product, "myTransition");
-  console.log(product);
+
   return (
     <div className={productClassName}>
-      <Text size={TextSizeEnum.S14} className={styles.productCategory}>
+      <div className={styles.productCategory}>
         <InfoHover id={`product-description-${product.id}`}>
           {product.description}
         </InfoHover>
-        {product.category}
-      </Text>
+        <Text size={TextSizeEnum.S14}>{product.category}</Text>
+      </div>
+
       <div className={styles.imageContainer}>
         <Image
           src={product.image}
