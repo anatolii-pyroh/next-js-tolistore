@@ -20,7 +20,10 @@
 }
 
 .productCategory {
-  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  stroke: var(--grey);
   color: var(--grey);
 }
 

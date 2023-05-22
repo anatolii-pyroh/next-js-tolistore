@@ -1,0 +1,41 @@
+.customTooltip {
+  //   background: var(--primary-dark-900);
+  //   border: 1px solid var(--primary-200);
+  background: var(--light-primary) !important;
+  box-shadow: var(--shadow-md);
+  transition: none !important;
+  z-index: 3;
+  padding: 10px !important;
+  max-width: 300px;
+  font-weight: 400;
+  text-align: start;
+  word-wrap: break-word;
+  white-space: break-spaces;
+  word-break: break-word;
+
+  [class*="react-tooltip-arrow"] {
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    // border-bottom: 1px solid var(--primary-200);
+    // border-right: 1px solid var(--primary-200);
+  }
+
+  &[class*="react-tooltip__place-bottom"] [class*="react-tooltip-arrow"] {
+    // border-top: 1px solid var(--primary-200);
+    // border-left: 1px solid var(--primary-200);
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
+  }
+}
+
+// /* smooth animations for tooltips (somehow default settings in index.css isnt working the right way) */
+// .__react_component_tooltip {
+//   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-out !important;
+//   opacity: 0 !important;
+//   visibility: visible;
+// }
+
+// .__react_component_tooltip.show {
+//   visibility: visible;
+//   opacity: 1 !important;
+// }
