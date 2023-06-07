@@ -11,7 +11,7 @@ interface IProps {
 const Product: React.FC<IProps> = ({ productData }) => {
   return (
     <>
-      <div>{JSON.stringify(productData)}</div>{" "}
+      <div>{JSON.stringify(productData)}</div>
     </>
   );
 };
