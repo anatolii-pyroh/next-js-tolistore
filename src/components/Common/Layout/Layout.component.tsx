@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import classNames from "classnames";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 import { useAppDispatch } from "@hooks/redux";
 
 import { Header } from "@components/Common/Header";
+import { Scrolling } from "@components/Scrolling";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
@@ -14,13 +15,9 @@ import { getUserDataThunk } from "@reducers/profile/profile.thunk";
 
 import styles from "./Layout.module.scss";
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
-
 const siteTitle = "Tolistore";
 
-export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
+export const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
   const { accessToken, isSetFromLocalStorage } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
   const router = useRouter();
@@ -52,7 +49,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
     dispatch(getUserDataThunk());
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const decoded = jwtDecode<{ exp: number }>(accessToken);
+    // const decoded = jwtDecode<{ exp: number }>(accessToken);
     // there is no exp in token payload so this logic wont run anyway
     // if (decoded.exp * 1000 < Date.now()) {
     //   return;
@@ -71,7 +68,11 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <main className='container'>{children}</main>
+      <main>
+        <Scrolling vertical className='container'>
+          {children}
+        </Scrolling>
+      </main>
     </div>
   );
 };

@@ -46,7 +46,6 @@ export const HeaderComponent = () => {
       <header className={headerClassName}>
         {loading ? null : (
           <>
-            {" "}
             <CustomLink
               href='/'
               size={TextSizeEnum.S16}
