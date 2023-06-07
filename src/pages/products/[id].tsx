@@ -3,17 +3,14 @@ import { GetStaticPaths, GetStaticProps } from "next";
 
 import { getAllProductsIds, getProductData } from "@utils/products";
 import { IProduct } from "@customTypes/index";
+import { ProductPage } from "@views/ProductPage";
 
-interface IProps {
+type Props = {
   productData: IProduct;
-}
+};
 
-const Product: React.FC<IProps> = ({ productData }) => {
-  return (
-    <>
-      <div>{JSON.stringify(productData)}</div>
-    </>
-  );
+const Product: React.FC<Props> = ({ productData }) => {
+  return <ProductPage productData={productData} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
