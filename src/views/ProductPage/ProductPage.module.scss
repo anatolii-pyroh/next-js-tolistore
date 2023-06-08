@@ -1,0 +1,31 @@
+.product {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.imageContainer {
+  height: 15rem;
+  min-width: 25rem;
+  background-color: white;
+  position: relative;
+}
+
+.productImage {
+  object-fit: contain;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 55rem;
+  line-height: 25px;
+  // border: 3px dashed red;
+}
+
+.starsContainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

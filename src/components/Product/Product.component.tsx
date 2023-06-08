@@ -3,9 +3,12 @@ import Image from "next/image";
 
 import { IProduct } from "@customTypes/index";
 
-import styles from "./Product.module.scss";
-import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
+import { Text, TextSizeEnum } from "@components/UI/Text";
 import { InfoHover } from "@components/UI/InfoHover";
+import { StarsRating } from "@components/UI/StarsRating";
+
+import styles from "./Product.module.scss";
+import Link from "next/link";
 
 type TProps = {
   product: IProduct;
@@ -16,7 +19,7 @@ export const ProductComponent: React.FC<TProps> = ({ product }) => {
   const productClassName = classNames(styles.product, "myTransition");
 
   return (
-    <div className={productClassName}>
+    <Link className={productClassName} href={`products/${product.id}`}>
       <div className={styles.productCategory}>
         <InfoHover id={`product-description-${product.id}`}>
           {product.description}
@@ -34,18 +37,17 @@ export const ProductComponent: React.FC<TProps> = ({ product }) => {
           priority
         />
       </div>
-      <CustomLink
-        href={`products/${product.id}`}
-        size={TextSizeEnum.S16}
-        className={styles.productTitle}
-      >
+      <Text size={TextSizeEnum.S16} className={styles.productTitle}>
         {product.title}
-      </CustomLink>
+      </Text>
       <div className={styles.ratingAndPrice}>
-        <Text size={TextSizeEnum.S14}>Rating: {product.rating.rate}/5</Text>
+        <StarsRating
+          rating={product.rating.rate}
+          name={`productRating=${product.id}`}
+        />
         <Text size={TextSizeEnum.S16}>{product.price.toFixed(2)}$</Text>
       </div>
-    </div>
+    </Link>
   );
 };
 

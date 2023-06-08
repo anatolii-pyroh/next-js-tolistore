@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Provider } from "react-redux";
-import { wrapper } from "@store/index";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { wrapper } from "@store/index";
 
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
@@ -14,6 +14,7 @@ import "@styles/index.scss";
 export default function App({ Component, router, ...rest }: AppProps) {
   const [loading, setLoading] = useState(false);
   const { store, props } = wrapper.useWrappedStore(rest);
+  const nodeRef = useRef(null);
 
   useEffect(() => {
     const handleStartRouteChanging = () => setLoading(true);
@@ -36,8 +37,9 @@ export default function App({ Component, router, ...rest }: AppProps) {
             key={router.pathname}
             classNames='pageTransition'
             timeout={300}
+            nodeRef={nodeRef}
           >
-            <Layout>
+            <Layout ref={nodeRef}>
               <Component {...props.pageProps} />
             </Layout>
           </CSSTransition>

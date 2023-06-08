@@ -12,10 +12,12 @@
   flex: 1 1 calc(350px - 25px);
   min-height: 350px;
   min-width: 200px;
+  color: var(--light-primary);
 
   &:hover {
     translate: 0 -15px;
     box-shadow: var(--shadow-card-hover);
+    text-decoration: none;
   }
 }
 
@@ -54,6 +56,7 @@
 [data-theme="dark"] {
   .product {
     background-color: #0d1b2a;
+    color: var(--dark-grey);
   }
 
   .productTitle {

@@ -14,10 +14,14 @@ import { useProfileActions } from "@reducers/profile/useProfileActions";
 import { getUserDataThunk } from "@reducers/profile/profile.thunk";
 
 import styles from "./Layout.module.scss";
+import React from "react";
 
 const siteTitle = "Tolistore";
 
-export const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
+export const LayoutComponent = React.forwardRef<
+  HTMLDivElement,
+  PropsWithChildren
+>(({ children }, ref) => {
   const { accessToken, isSetFromLocalStorage } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
   const router = useRouter();
@@ -68,13 +72,13 @@ export const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <main>
+      <main ref={ref}>
         <Scrolling vertical className='container'>
           {children}
         </Scrolling>
       </main>
     </div>
   );
-};
+});
 
 LayoutComponent.displayName = "Layout";
