@@ -1,16 +1,25 @@
 import React from "react";
-import { RoundBadgeProps } from "./RoundBadge.types";
 
+import { FontWeightEnum, Text, TextSizeEnum } from "../Text";
+
+import { RoundBadgeProps } from "./RoundBadge.types";
 import styles from "./RoundBadge.module.scss";
 
 export const RoundBadgeComponent: React.FC<RoundBadgeProps> = ({
-  color = "red",
+  color = "white",
   children,
 }) => {
   return (
     <div className={styles.badgeContainer}>
       {children}
-      <div className={styles.badge} style={{ backgroundColor: color }} />
+      <Text
+        size={TextSizeEnum.S16}
+        fontWeight={FontWeightEnum.FW600}
+        className={styles.badge}
+        style={{ backgroundColor: color }}
+      >
+        3
+      </Text>
     </div>
   );
 };

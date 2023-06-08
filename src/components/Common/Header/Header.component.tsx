@@ -20,6 +20,7 @@ import {
 import styles from "./Header.module.scss";
 import { Modal } from "@components/UI/Modal";
 import { LoginForm } from "@components/LoginForm";
+import { RoundBadge } from "@components/UI/RoundBadge";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
@@ -70,7 +71,9 @@ export const HeaderComponent = () => {
                     welcome, {userData.username}!
                   </Text>
                   <Link href='/cart'>
-                    <SvgIcon src={IconsEnum.cart} />
+                    <RoundBadge>
+                      <SvgIcon src={IconsEnum.cart} />
+                    </RoundBadge>
                   </Link>
                 </div>
 

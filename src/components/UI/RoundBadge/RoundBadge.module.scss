@@ -1,13 +1,15 @@
 .badgeContainer {
   position: relative;
   width: fit-content;
+  color: var(--light-primary);
 }
 
 .badge {
   position: absolute;
-  top: -7px;
-  right: -7px;
-  width: 15px;
-  height: 15px;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
+  text-align: center;
 }
