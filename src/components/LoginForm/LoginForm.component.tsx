@@ -25,7 +25,6 @@ export const LoginFormComponent = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     dispatch(signInThunk(signInData));
   };
 

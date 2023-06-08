@@ -6,6 +6,7 @@ import { IProduct } from "@customTypes/index";
 import styles from "./Product.module.scss";
 import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
 import { InfoHover } from "@components/UI/InfoHover";
+import { StarsRating } from "@components/UI/StarsRating";
 
 type TProps = {
   product: IProduct;
@@ -42,7 +43,9 @@ export const ProductComponent: React.FC<TProps> = ({ product }) => {
         {product.title}
       </CustomLink>
       <div className={styles.ratingAndPrice}>
-        <Text size={TextSizeEnum.S14}>Rating: {product.rating.rate}/5</Text>
+        <Text size={TextSizeEnum.S14}>
+          <StarsRating rating={product.rating.rate} />
+        </Text>
         <Text size={TextSizeEnum.S16}>{product.price.toFixed(2)}$</Text>
       </div>
     </div>
