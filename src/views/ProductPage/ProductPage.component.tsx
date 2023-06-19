@@ -20,6 +20,7 @@ export const ProductPageComponent: React.FC<Props> = ({ productData }) => {
           className={styles.productImage}
           alt='productImg'
           fill
+          sizes='10vw'
           priority
         />
       </div>

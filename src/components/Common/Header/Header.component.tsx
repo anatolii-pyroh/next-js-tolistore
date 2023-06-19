@@ -11,6 +11,9 @@ import { useProfileActions } from "@reducers/profile/useProfileActions";
 
 import { CustomLink, Text, TextSizeEnum } from "@components/UI/Text";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
+import { Modal } from "@components/UI/Modal";
+import { RoundBadge } from "@components/UI/RoundBadge";
+import { LoginForm } from "@components/LoginForm";
 import {
   Button,
   ButtonVariantEnum,
@@ -18,9 +21,6 @@ import {
 } from "@components/UI/Button";
 
 import styles from "./Header.module.scss";
-import { Modal } from "@components/UI/Modal";
-import { LoginForm } from "@components/LoginForm";
-import { RoundBadge } from "@components/UI/RoundBadge";
 
 export const HeaderComponent = () => {
   const { accessToken, loading, userData } = useProfileSelector();
