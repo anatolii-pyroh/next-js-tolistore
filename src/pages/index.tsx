@@ -10,6 +10,7 @@ type Props = {
 };
 
 export default function Home({ productsData }: Props) {
+  console.log(Math.random());
   return <HomePage productsData={productsData} />;
 }
 
