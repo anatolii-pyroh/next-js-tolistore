@@ -1,5 +1,4 @@
 import React, { FormEvent, useEffect, useState } from "react";
-
 import { useAppDispatch } from "@hooks/redux";
 
 import { signInThunk } from "@reducers/auth/auth.thunk";
@@ -7,11 +6,11 @@ import { useAuthSelector } from "@reducers/auth/useAuthSelector";
 import { useAuthActions } from "@reducers/auth/useAuthActions";
 
 import { Input } from "@components/UI/Input";
-
-import styles from "./LoginForm.module.scss";
 import { Button } from "@components/UI/Button";
 import { ButtonVariantEnum } from "@components/UI/Button/Button.types";
 import { Loader } from "@components/Common/Loader";
+
+import styles from "./LoginForm.module.scss";
 
 export const LoginFormComponent = ({
   onSuccess,

@@ -11,11 +11,3 @@ export type FetchAuthActionType = PayloadAction<string>;
 
 // api
 export type FetchAuthSignInResponse = { token: string };
-
-// utils
-// export type TokenBoundariesType = {
-//   minX: number;
-//   maxX: number;
-//   minY: number;
-//   maxY: number;
-// };

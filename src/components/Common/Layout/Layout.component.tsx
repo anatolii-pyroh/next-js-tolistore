@@ -7,7 +7,7 @@ import classNames from "classnames";
 import { useAppDispatch } from "@hooks/redux";
 
 import { Header } from "@components/Common/Header";
-import { Scrolling } from "@components/Scrolling";
+import { Scrolling } from "@components/Common/Scrolling";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
@@ -51,16 +51,6 @@ export const LayoutComponent = React.forwardRef<
     }
 
     dispatch(getUserDataThunk());
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const decoded = jwtDecode<{ exp: number }>(accessToken);
-    // there is no exp in token payload so this logic wont run anyway
-    // if (decoded.exp * 1000 < Date.now()) {
-    //   return;
-    //   navigateAndClearToken();
-    // }
-    // const timeout = decoded.exp * 1000 - Date.now();
-    // setTimeout(() => navigateAndClearToken(), timeout);
   }, [accessToken]);
 
   return (

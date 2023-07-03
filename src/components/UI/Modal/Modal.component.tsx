@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { CSSTransition } from "react-transition-group";
 
 import { Portal } from "@components/Portal";
-import { Scrolling } from "@components/Scrolling";
+import { Scrolling } from "@components/Common/Scrolling";
 import { IconsEnum, SvgIcon } from "@components/UI/SvgIcon";
 
 import { ModalProps } from "./Modal.types";
