@@ -15,3 +15,9 @@ export interface ILogin {
   username: string;
   password: string;
 }
+
+export type AccessToken = {
+  sub: number;
+  user: string;
+  iat: number;
+};

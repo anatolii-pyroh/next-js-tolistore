@@ -4,9 +4,9 @@ import { AxiosError } from "axios";
 
 export const getUserDataThunk = createAsyncThunk(
   "profile/getUserDataThunk",
-  async (_, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
-      const response = await profileService.getUserData();
+      const response = await profileService.getUserData(id);
       return response;
     } catch (_err) {
       const err = _err as AxiosError;

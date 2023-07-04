@@ -2,6 +2,9 @@ import React, { PropsWithChildren, useEffect, useMemo } from "react";
 import Head from "next/head";
 import classNames from "classnames";
 import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
+
+import { AccessToken } from "@customTypes/index";
 
 import { useAppDispatch } from "@hooks/redux";
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
@@ -21,7 +24,7 @@ export const LayoutComponent = React.forwardRef<
 >(({ children }, ref) => {
   const { accessToken, isSetFromReducer } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
-  const lastSavedToken = useMemo(() => accessToken, [accessToken]);
+  const lastSavedToken = useMemo(() => accessToken, []);
   const dispatch = useAppDispatch();
 
   const layoutClassName = classNames(`${styles.layout}`);
@@ -36,9 +39,11 @@ export const LayoutComponent = React.forwardRef<
   }, []);
 
   useEffect(() => {
-    if (lastSavedToken === accessToken) return;
-    if (!isSetFromReducer) return;
-    dispatch(getUserDataThunk());
+    if (!accessToken || !isSetFromReducer || lastSavedToken === accessToken)
+      return;
+
+    const decoded = jwtDecode<AccessToken>(accessToken);
+    dispatch(getUserDataThunk(decoded.sub));
   }, [accessToken]);
 
   return (
