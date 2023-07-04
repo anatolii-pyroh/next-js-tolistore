@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 import Cookies from "js-cookie";
 import classNames from "classnames";
-import { CSSTransition } from "react-transition-group";
-
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
@@ -29,7 +27,6 @@ export const HeaderComponent = () => {
   const [isVisibleLoginForm, setIsVisibleLoginForm] = useState(false);
   const loggedInButtonsRef = useRef(null);
   const loggedOutButtonRef = useRef(null);
-  const router = useRouter();
 
   const headerClassName = classNames(`${styles.header} container`);
 
@@ -51,11 +48,7 @@ export const HeaderComponent = () => {
             <CustomLink
               href='/'
               size={TextSizeEnum.S16}
-              style={{
-                color: "var(--white)",
-                opacity: router.pathname !== "/" ? 1 : 0,
-                pointerEvents: router.pathname !== "/" ? "all" : "none",
-              }}
+              style={{ color: "var(--white)" }}
             >
               ← Back to home
             </CustomLink>

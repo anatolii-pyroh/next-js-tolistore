@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren, useEffect, useMemo } from "react";
 import Head from "next/head";
 import classNames from "classnames";
 import Cookies from "js-cookie";
@@ -21,11 +21,14 @@ export const LayoutComponent = React.forwardRef<
 >(({ children }, ref) => {
   const { accessToken, isSetFromReducer } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
+  const lastSavedToken = useMemo(() => accessToken, [accessToken]);
   const dispatch = useAppDispatch();
 
   const layoutClassName = classNames(`${styles.layout}`);
 
   useEffect(() => {
+    if (accessToken) return;
+
     const token = Cookies.get("accessToken");
     if (typeof token === "string") {
       changeAccessToken(token);
@@ -33,6 +36,7 @@ export const LayoutComponent = React.forwardRef<
   }, []);
 
   useEffect(() => {
+    if (lastSavedToken === accessToken) return;
     if (!isSetFromReducer) return;
     dispatch(getUserDataThunk());
   }, [accessToken]);
