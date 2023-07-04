@@ -1,13 +1,17 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 
 import { getAllProductsIds, getProductData } from "@utils/products";
 import { IProduct } from "@customTypes/index";
-import { ProductPage } from "@views/ProductPage";
 
 type Props = {
   productData: IProduct;
 };
+
+const ProductPage = dynamic<Props>(() =>
+  import("@views/ProductPage").then((mod) => mod.ProductPage)
+);
 
 const Product: React.FC<Props> = ({ productData }) => {
   return <ProductPage productData={productData} />;

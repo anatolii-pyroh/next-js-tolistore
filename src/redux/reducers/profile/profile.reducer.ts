@@ -7,6 +7,7 @@ import {
 import { getUserDataThunk } from "./profile.thunk";
 
 import Cookies from "js-cookie";
+// import jwtDecode from "jwt-decode";
 
 const initialState: TInitialState = {
   userData: {} as UserData,
@@ -25,7 +26,9 @@ const profileSlice = createSlice({
   initialState,
   reducers: {
     changeAccessToken(state, { payload }: ProfileChangeAccessTokenAction) {
-      Cookies.set("accessToken", payload);
+      Cookies.set("accessToken", payload, {
+        // expires: new Date(jwtDecode(payload).exp * 1000),
+      });
       state.accessToken = payload;
       state.isSetFromReducer = true;
     },
