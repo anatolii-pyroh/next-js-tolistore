@@ -2,7 +2,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 export type TInitialState = {
   accessToken: string;
-  isSetFromLocalStorage: boolean;
+  isSetFromReducer: boolean;
   profileError: {
     status: boolean;
     message: string;

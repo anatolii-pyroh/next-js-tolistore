@@ -36,6 +36,7 @@ export const HeaderComponent = () => {
   const handleLogoutClick = () => {
     changeAccessToken("");
     Cookies.remove("userId");
+    Cookies.remove("accessToken");
   };
 
   useEffect(() => {

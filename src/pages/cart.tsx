@@ -3,7 +3,6 @@ import { wrapper } from "@store/index";
 import { getUserProductsCartThunk } from "@reducers/profile/profileCart/profileCart.thunk";
 
 import { UserProductsCartPage } from "@views/UserProductsCartPage";
-// import Cookies from "js-cookie";
 
 const Cart = () => {
   return <UserProductsCartPage />;

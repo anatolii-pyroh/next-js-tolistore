@@ -2,7 +2,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { AnyAction, createSlice } from "@reduxjs/toolkit";
 
 import { signInThunk } from "./auth.thunk";
-import { FetchAuthActionType, TInitialState } from "./auth.types";
+import { TInitialState } from "./auth.types";
 
 const initialState: TInitialState = {
   user: "",
@@ -14,11 +14,6 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    addUser(state, { payload }: FetchAuthActionType) {
-      // console.log("Before:", state.user);
-      state.user = payload;
-      // console.log("After:", state.user);
-    },
     resetSuccessState(state) {
       state.success = false;
     },
@@ -47,5 +42,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { addUser, resetSuccessState } = authSlice.actions;
+export const { resetSuccessState } = authSlice.actions;
 export default authSlice.reducer;

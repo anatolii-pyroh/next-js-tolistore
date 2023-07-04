@@ -1,20 +1,17 @@
-import { PropsWithChildren, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { PropsWithChildren, useEffect } from "react";
 import Head from "next/head";
 import classNames from "classnames";
-// import jwtDecode from "jwt-decode";
+import Cookies from "js-cookie";
 
 import { useAppDispatch } from "@hooks/redux";
-
-import { Header } from "@components/Common/Header";
-import { Scrolling } from "@components/Common/Scrolling";
-
 import { useProfileSelector } from "@reducers/profile/useProfileSelector";
 import { useProfileActions } from "@reducers/profile/useProfileActions";
 import { getUserDataThunk } from "@reducers/profile/profile.thunk";
 
+import { Header } from "@components/Common/Header";
+import { Scrolling } from "@components/Common/Scrolling";
+
 import styles from "./Layout.module.scss";
-import React from "react";
 
 const siteTitle = "Tolistore";
 
@@ -22,34 +19,21 @@ export const LayoutComponent = React.forwardRef<
   HTMLDivElement,
   PropsWithChildren
 >(({ children }, ref) => {
-  const { accessToken, isSetFromLocalStorage } = useProfileSelector();
+  const { accessToken, isSetFromReducer } = useProfileSelector();
   const { changeAccessToken } = useProfileActions();
-  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const layoutClassName = classNames(`${styles.layout}`);
 
-  const navigateAndClearToken = () => {
-    changeAccessToken("");
-    router.push("/login");
-  };
-
   useEffect(() => {
-    const token =
-      typeof localStorage !== "undefined" &&
-      localStorage.getItem("accessToken");
+    const token = Cookies.get("accessToken");
     if (typeof token === "string") {
       changeAccessToken(token);
     }
   }, []);
 
   useEffect(() => {
-    if (!isSetFromLocalStorage) return;
-    if (!accessToken) {
-      return;
-      navigateAndClearToken();
-    }
-
+    if (!isSetFromReducer) return;
     dispatch(getUserDataThunk());
   }, [accessToken]);
 

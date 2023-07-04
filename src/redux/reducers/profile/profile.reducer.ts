@@ -13,7 +13,7 @@ const initialState: TInitialState = {
   accessToken: "",
   loading: false,
   success: false,
-  isSetFromLocalStorage: false,
+  isSetFromReducer: false,
   profileError: {
     status: false,
     message: "",
@@ -25,9 +25,9 @@ const profileSlice = createSlice({
   initialState,
   reducers: {
     changeAccessToken(state, { payload }: ProfileChangeAccessTokenAction) {
-      localStorage.setItem("accessToken", payload);
+      Cookies.set("accessToken", payload);
       state.accessToken = payload;
-      state.isSetFromLocalStorage = true;
+      state.isSetFromReducer = true;
     },
   },
   extraReducers: (builder) => {
@@ -40,7 +40,6 @@ const profileSlice = createSlice({
       state.success = true;
       state.userData = payload;
       Cookies.set("userId", state.userData.id.toString(), { expires: 7 });
-      // console.log(state.userData);
     });
     builder.addCase(getUserDataThunk.rejected, (state, { payload }) => {
       state.profileError = {
